@@ -6,5 +6,6 @@
 
   - Every time after:
     - npm run dev
-
+##Minting Page
+![Minting Page](https://imgur.com/a/FgA8Hrb)
   
