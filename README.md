@@ -2,10 +2,8 @@
 
 ## How to Run
   - First Time:
-    - npm run install && npm run dev
-
+    - `yarn install`
+    - `yarn dev`
   - Every time after:
-    - npm run dev
-##Minting Page
-![Minting Page](https://imgur.com/a/FgA8Hrb)
+    - `yarn dev`
   
