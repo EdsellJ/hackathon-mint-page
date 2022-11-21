@@ -1,0 +1,83 @@
+{
+  "skills": [
+    {
+      "skillName": "React"
+    },
+    {
+      "skillName": "Node.js"
+    },
+    {
+      "skillName": "Angular"
+    },
+    {
+      "skillName": "Express"
+    },
+    {
+      "skillName": "Rust"
+    },
+    {
+      "skillName": "Java"
+    },
+    {
+      "skillName": "Python"
+    },
+    {
+      "skillName": "Ruby"
+    },
+    {
+      "skillName": "C++"
+    },
+    {
+      "skillName": "Linux"
+    },
+    {
+      "skillName": "Docker"
+    },
+    {
+      "skillName": "Kubernetes"
+    },
+    {
+      "skillName": "AWS"
+    },
+    {
+      "skillName": "Web3"
+    },
+    {
+      "skillName": "DNS"
+    },
+    {
+      "skillName": "Go"
+    },
+    {
+      "skillName": "C#"
+    },
+    {
+      "skillName": ".Net"
+    },
+    {
+      "skillName": "Kotlin"
+    },
+    {
+      "skillName": "Swift"
+    },
+    {
+      "skillName": "UI/UX"
+    },
+    {
+      "skillName": "Animation"
+    },
+    {
+      "skillName": "Adobe After Effects"
+    }
+
+  ],
+  "creator": "https://credentialengineregistry.org/resources/ce-036d082d-d80e-41a7-99a0-2d63a4ad3a4a",
+  "updateDate": "2022-03-28T20:12:47.475799Z",
+  "publishDate": "2022-03-28T20:12:47.475816Z",
+  "archiveDate": null,
+  "author": "Western Governors University",
+  "uuid": "1f90cce5-3905-4f08-b374-3a4f4e0a936d",
+  "name": "Foundations of  Data Science and Analytics",
+  "id": "https://osmt.wgu.edu/api/collections/1f90cce5-3905-4f08-b374-3a4f4e0a936d",
+  "@context": "https://rsd.openskillsnetwork.org/context-v1.json"
+}

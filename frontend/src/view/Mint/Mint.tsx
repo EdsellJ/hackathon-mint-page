@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import skills from './skills.json';
+import skills from './skills_updated.json';
 import Select from 'react-select';
 
 import { transactions } from "near-api-js";
