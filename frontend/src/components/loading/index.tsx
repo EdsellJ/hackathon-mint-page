@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 // @assets
-import LoadingImage from "assets/gif/loading.gif";
+import LoadingImage from "assets/gif/loading.gif"; 
 import LoadingText from "assets/png/LoadingText.png";
 // @styled-components
 import { Layout } from "./styled";

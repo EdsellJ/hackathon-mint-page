@@ -4,11 +4,13 @@ import skills from './skills_updated.json';
 import Select from 'react-select';
 
 import { transactions } from "near-api-js";
-import { login, logout } from "near/utils";
 
 import { useSupplyContext } from "context/SupplyContext";
 import { FileUploader } from "react-drag-drop-files";
 import { NFTStorage, File, Blob } from 'nft.storage'
+
+import imageHolder from 'assets/png/imageHolder.png';
+
 const BN = require("bn.js");
 // ----------------------------------------------------------
 const fileTypes = ["JPG", "PNG", "GIF"];
@@ -128,93 +130,98 @@ export default function Mint() {
 
     const classes = {
         card: {
-            backgroundColor: '#f1f1f1',
+            backgroundColor: '#E9E9ED7A',
             border: '3.5px solid black',
-            marginLeft: '10px'
         },
-        button: {
-            width: "150px",
-            height: "50px",
-            borderRadius: "10px",
-            backgroundColor: "#dcd0ff",
-            fontFamily: 'Gill Sans',
-            float: 'right'
+        title: {
+            color: '#404471',
+            fontWeight: 'bold'
         },
         mintButton: {
             width: "150px",
             height: "50px",
             borderRadius: "10px",
-            backgroundColor: "#aaf0d1",
-            fontFamily: 'Gill Sans',
+            backgroundColor: "#F7623F",
             marginTop: '2.5%',
             marginBottom: '10%',
+            color: 'white',
+            border: 'none',
         },
-        h3: {
-            fontFamily: 'Gill Sans',
-            fontWeight: 'bold'
+        uploadImgDiv: {
+            padding: 20,
+            marginTop: '10%'
         },
-        h4: {
-            fontFamily: 'Gill Sans',
+        upload: {
+            float: 'left'
         },
-        img1: {
+        uploadContentDiv: {
             border: '2px solid black',
-            width: '50%',
-            marginBottom: '10%',
-            marginTop: '2%'
+            padding: 50,
+            marginTop: '10%',
         },
-        img2: {
-            width: '70%',
-            marginTop: '2%',
-            marginBottom: '10%'
+        dragFileText: {
+            marginBottom: '15%'
+        },
+        inputName: {
+            marginBottom: '5%',
+            width: '100%',
+            padding: 15,
+            borderRadius: 25,
+            border: '1px solid grey'
+        },
+        inputPrice: {
+            margin: '5%',
+            width: '50%',
+            padding: 12,
+            borderRadius: 25,
+            border: '1px solid grey'
+        },
+        form: {
+            marginTop: '10%'
+        },
+        description: {
+            border: '2px solid black'
         }
     }
 
     return (
         <div className="container">
-            <div className="row header" style={{ textAlign: "center", marginBottom: "100px", marginTop: "20px" }}>
-                <div className="col-lg-5"></div>
-                <div className="col-lg-1">
-                    {/* <h2><a href="/">MINT</a></h2> */}
-                </div>
-                <div className="col-lg-1">
-                    {/* <h2><a href="/Job">JOBS</a></h2> */}
-                </div>
-                <div className="col-lg-5">
-                    <div style={{ textAlign: "center", marginTop: "20px" }}>
-                        <button style={classes.button} onClick={window?.walletConnection?.isSignedIn() ? logout : login}>
-                            {window?.walletConnection?.isSignedIn()
-                                ? window.accountId.substr(0, 5) +
-                                "..." +
-                                window.accountId.substr(
-                                    window.accountId.length - 4,
-                                    window.accountId.length
-                                )
-                                : "Wallet Connect"}
-                        </button>
-                    </div>
-                </div>
-            </div>
 
             <div className="row">
                 <div className="d-flex justify-content-center">
                     <div className="col-sm-6">
-                        <div className="card align-items-center" style={classes.card}>
+                        <div className="card mt-5 align-items-center" style={classes.card}>
                             <div className="card-body">
                                 <div className="card-block text-center">
-                                    <h3 className="card-title" style={classes.h3}>Upload Badge Art</h3>
+                                    <h1 className="card-title mt-2" style={classes.title}>Mint a Badge</h1>
+                                    <div style={classes.upload}>
+                                        <h4 className="card-subtitle mt-3" style={{ color: '#404471', }}>Upload Badge Art</h4>
+                                    </div>
                                     <br />
-                                    <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1362px-Placeholder_view_vector.svg.png?20220519031949' style={classes.img1} />
-                                    <h4 className="card-text" style={classes.h4}>Upload an image to show as badge art to your students</h4>
+                                    <div style={classes.uploadContentDiv}>
+                                        <div style={classes.uploadImgDiv}>
+                                            <Image src={imageHolder} alt="Image Placeholder" height={50} width={50} />
+                                        </div>
+                                        <h4 style={classes.dragFileText}>Drag and Drop Files</h4>
+                                        <div id="imageUpload">
+                                            <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
+                                        </div>
+                                    </div>
+                                    <form action="" method="post" style={classes.form}>
+                                        <input type='text' id="badgeName" name="badgeName" placeholder="Badge Name" style={classes.inputName} />
+                                        <br />
+                                        <textarea style={classes.description} id="description" name="description" placeholder="Add a description for your badge..." rows="8" cols="50" />
+                                    </form>
                                     <br />
-                                    <div id="imageUpload">
-                                        <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
+                                    <div>
+                                        <Select options={skillTitles} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '2px solid #404471' }), }} placeholder="Select a skill..." />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="card align-items-center" style={classes.card}>
+                    {/* <div className="card align-items-center" style={classes.card}>
                         <div className="card-body">
                             <div className="card-block text-center">
                                 <h3 className="card-title" style={classes.h3}>Hard skills</h3>
@@ -223,18 +230,18 @@ export default function Mint() {
                                 <h4 className="card-text" style={classes.h4}>Select a skill associated with this class below</h4>
                                 <br />
                                 <div>
-                                    {/* <input className="form-control" type="text" onKeyDown={getRole} id="skills" placeholder="Add skill here" /> */}
+                                    <input className="form-control" type="text" onKeyDown={getRole} id="skills" placeholder="Add skill here" />
                                     <Select options={skillTitles} onChange={getRole} id="skills" />
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                 </div>
             </div>
             <br />
             <div className="mint text-center">
-                <button style={classes.mintButton} onClick={mintNFT}>MINT</button>
+                <button style={classes.mintButton} onClick={mintNFT}>Mint Badge</button>
             </div>
         </div>
     );
