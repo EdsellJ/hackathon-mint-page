@@ -10,6 +10,10 @@ import { FileUploader } from "react-drag-drop-files";
 import { NFTStorage, File, Blob } from 'nft.storage'
 
 import imageHolder from 'assets/png/imageHolder.png';
+import one from 'assets/png/One.png';
+import two from 'assets/png/two.png';
+import three from 'assets/png/three.png';
+import smallLogo from 'assets/png/small.png';
 
 const BN = require("bn.js");
 // ----------------------------------------------------------
@@ -129,13 +133,10 @@ export default function Mint() {
     }
 
     const classes = {
-        card: {
-            backgroundColor: '#E9E9ED7A',
-            border: '3.5px solid black',
-        },
         title: {
             color: '#404471',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            fontFamily: 'Dm Sans',
         },
         mintButton: {
             width: "150px",
@@ -149,15 +150,12 @@ export default function Mint() {
         },
         uploadImgDiv: {
             padding: 20,
-            marginTop: '10%'
-        },
-        upload: {
-            float: 'left'
+            margin: 'auto',
+            alignItems: 'center'
         },
         uploadContentDiv: {
             border: '2px solid black',
             padding: 50,
-            marginTop: '10%',
         },
         dragFileText: {
             marginBottom: '15%'
@@ -177,68 +175,76 @@ export default function Mint() {
             border: '1px solid grey'
         },
         form: {
-            marginTop: '10%'
+            marginTop: '5%'
         },
-        description: {
-            border: '2px solid black'
+        info: {
+            fontFamily: 'Dm Sans',
+            color: '#404471',
+            marginTop: '-5%',
+            marginLeft: '5%'
         }
     }
 
     return (
-        <div className="container">
+        <div>
+            {/* <Image src={smallLogo} /> */}
+            <div className="d-flex justify-content-center">
+                <div className="col-sm-6">
+                    <div className="card mt-5">
+                        <div className="card-body">
+                            <div className="card-block">
+                                <h1 className="card-title mt-2" style={classes.title}>Mint a Badge</h1>
+                                <br />
+                                <div className="row">
+                                    <Image src={one} height={30} width={30} />
+                                    <h4 style={classes.info}>Information</h4>
+                                </div>
 
-            <div className="row">
-                <div className="d-flex justify-content-center">
-                    <div className="col-sm-6">
-                        <div className="card mt-5 align-items-center" style={classes.card}>
-                            <div className="card-body">
-                                <div className="card-block text-center">
-                                    <h1 className="card-title mt-2" style={classes.title}>Mint a Badge</h1>
-                                    <div style={classes.upload}>
-                                        <h4 className="card-subtitle mt-3" style={{ color: '#404471', }}>Upload Badge Art</h4>
-                                    </div>
+                                <form action="" method="post" style={classes.form}>
+                                    <label>Badge Name</label>
+                                    <input type='text' id="badgeName" name="badgeName" placeholder="Type a Badge Name" style={classes.inputName} />
                                     <br />
-                                    <div style={classes.uploadContentDiv}>
-                                        <div style={classes.uploadImgDiv}>
-                                            <Image src={imageHolder} alt="Image Placeholder" height={50} width={50} />
-                                        </div>
-                                        <h4 style={classes.dragFileText}>Drag and Drop Files</h4>
-                                        <div id="imageUpload">
-                                            <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
-                                        </div>
-                                    </div>
-                                    <form action="" method="post" style={classes.form}>
-                                        <input type='text' id="badgeName" name="badgeName" placeholder="Badge Name" style={classes.inputName} />
-                                        <br />
-                                        <textarea style={classes.description} id="description" name="description" placeholder="Add a description for your badge..." rows="8" cols="50" />
-                                    </form>
+                                    <label>Assessment</label>
                                     <br />
-                                    <div>
-                                        <Select options={skillTitles} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '2px solid #404471' }), }} placeholder="Select a skill..." />
+                                    <textarea id="description" name="description" placeholder="What actions were performed to earn this badge..." rows="8" cols="50" />
+                                </form>
+
+                                <br />
+                                <div className="row">
+                                    <Image src={two} height={30} width={30} />
+                                    <h4 style={classes.info}>Add Associated Skill</h4>
+                                </div>
+
+                                <div style={classes.form}>
+                                    <Select options={skillTitles} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '2px solid #404471' }), }} placeholder="Select a skill..." />
+                                </div>
+
+                                <br />
+                                <div className="row">
+                                    <Image src={three} height={30} width={30} />
+                                    <h4 style={classes.info}>Upload</h4>
+                                </div>
+
+                                <br />
+                                <div>
+                                    <h4 style={{ color: '#404471', fontFamily: 'Dm Sans', }}>Upload Badge Art</h4>
+                                </div>
+
+                                <div style={classes.uploadContentDiv}>
+                                    <div style={classes.uploadImgDiv}>
+                                        <Image src={imageHolder} alt="Image Placeholder" height={50} width={50} />
+                                    </div>
+                                    <h4 style={classes.dragFileText}>Drag and Drop Files</h4>
+                                    <div id="imageUpload">
+                                        <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    {/* <div className="card align-items-center" style={classes.card}>
-                        <div className="card-body">
-                            <div className="card-block text-center">
-                                <h3 className="card-title" style={classes.h3}>Hard skills</h3>
-                                <br />
-                                <img src='https://preply.com/wp-content/uploads/2022/07/Soft-Skills.png' style={classes.img2} />
-                                <h4 className="card-text" style={classes.h4}>Select a skill associated with this class below</h4>
-                                <br />
-                                <div>
-                                    <input className="form-control" type="text" onKeyDown={getRole} id="skills" placeholder="Add skill here" />
-                                    <Select options={skillTitles} onChange={getRole} id="skills" />
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
-
                 </div>
             </div>
+
             <br />
             <div className="mint text-center">
                 <button style={classes.mintButton} onClick={mintNFT}>Mint Badge</button>
