@@ -12,3 +12,4 @@ Cargo.lock
 frontend/node_modules
 contract/target/*
 frontend/.next/*
+frontend/out/*
