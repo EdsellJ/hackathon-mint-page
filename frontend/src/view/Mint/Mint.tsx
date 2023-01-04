@@ -15,6 +15,8 @@ import two from 'assets/png/two.png';
 import three from 'assets/png/three.png';
 import smallLogo from 'assets/png/small.png';
 
+import styles from '../../styles/styles.mint.css';
+
 const BN = require("bn.js");
 // ----------------------------------------------------------
 const fileTypes = ["JPG", "PNG", "GIF"];
@@ -136,12 +138,11 @@ export default function Mint() {
         title: {
             color: '#404471',
             fontWeight: 'bold',
-            fontFamily: 'Dm Sans',
         },
         mintButton: {
-            width: "150px",
-            height: "50px",
-            borderRadius: "10px",
+            width: 150,
+            height: 50,
+            borderRadius: 25,
             backgroundColor: "#F7623F",
             marginTop: '2.5%',
             marginBottom: '10%',
@@ -151,19 +152,20 @@ export default function Mint() {
         uploadImgDiv: {
             padding: 20,
             margin: 'auto',
-            alignItems: 'center'
+
         },
         uploadContentDiv: {
             border: '2px solid black',
             padding: 50,
+
         },
         dragFileText: {
-            marginBottom: '15%'
+            marginBottom: '15%',
         },
         inputName: {
             marginBottom: '5%',
             width: '100%',
-            padding: 15,
+            padding: 12,
             borderRadius: 25,
             border: '1px solid grey'
         },
@@ -178,10 +180,15 @@ export default function Mint() {
             marginTop: '5%'
         },
         info: {
-            fontFamily: 'Dm Sans',
             color: '#404471',
-            marginTop: '-5%',
-            marginLeft: '5%'
+            marginTop: '-4.5%',
+            marginLeft: '4.5%',
+            fontWeight: 'bold'
+        },
+        label: {
+            color: '#404471',
+            fontWeight: 'bold',
+            marginBottom: '2%'
         }
     }
 
@@ -190,51 +197,66 @@ export default function Mint() {
             {/* <Image src={smallLogo} /> */}
             <div className="d-flex justify-content-center">
                 <div className="col-sm-6">
-                    <div className="card mt-5">
+                    <div className="card mt-5 p-2 shadow shadow-intensity-xl">
                         <div className="card-body">
                             <div className="card-block">
                                 <h1 className="card-title mt-2" style={classes.title}>Mint a Badge</h1>
-                                <br />
-                                <div className="row">
+
+                                <div className="row mt-4">
                                     <Image src={one} height={30} width={30} />
                                     <h4 style={classes.info}>Information</h4>
                                 </div>
 
                                 <form action="" method="post" style={classes.form}>
-                                    <label>Badge Name</label>
-                                    <input type='text' id="badgeName" name="badgeName" placeholder="Type a Badge Name" style={classes.inputName} />
+                                    <label style={classes.label}>Badge Name</label>
+                                    <input type='text' id="badgeName" name="badgeName" placeholder="Type a badge name..." style={classes.inputName} />
                                     <br />
-                                    <label>Assessment</label>
+                                    <label style={classes.label}>Assessment</label>
                                     <br />
-                                    <textarea id="description" name="description" placeholder="What actions were performed to earn this badge..." rows="8" cols="50" />
+                                    <textarea id="description" name="description" placeholder=" What actions were performed to earn this badge..." rows={8} cols={70} />
                                 </form>
 
-                                <br />
-                                <div className="row">
+                                <div className="row mt-5">
                                     <Image src={two} height={30} width={30} />
                                     <h4 style={classes.info}>Add Associated Skill</h4>
                                 </div>
 
                                 <div style={classes.form}>
-                                    <Select options={skillTitles} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '2px solid #404471' }), }} placeholder="Select a skill..." />
+                                    <Select options={skillTitles} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '2px solid #404471', borderRadius: 25 }), }} placeholder="Select a skill..." />
                                 </div>
 
-                                <br />
-                                <div className="row">
+                                <div className="row mt-5">
                                     <Image src={three} height={30} width={30} />
                                     <h4 style={classes.info}>Upload</h4>
                                 </div>
 
                                 <br />
                                 <div>
-                                    <h4 style={{ color: '#404471', fontFamily: 'Dm Sans', }}>Upload Badge Art</h4>
+                                    <h5 style={{ color: '#404471' }}>Upload Badge Art</h5>
                                 </div>
 
                                 <div style={classes.uploadContentDiv}>
-                                    <div style={classes.uploadImgDiv}>
+                                    <div style={classes.uploadImgDiv} className="d-flex justify-content-center">
                                         <Image src={imageHolder} alt="Image Placeholder" height={50} width={50} />
                                     </div>
-                                    <h4 style={classes.dragFileText}>Drag and Drop Files</h4>
+                                    <br />
+                                    <h4 style={classes.dragFileText} className="text-center">Drag and Drop Files</h4>
+                                    <div id="imageUpload">
+                                        <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
+                                    </div>
+                                </div>
+
+                                <br />
+                                <div>
+                                    <h5 style={{ color: '#404471' }}>Upload Associated Work <span style={{ fontSize: 15 }}>(Documentation of materials used in class)</span></h5>
+                                </div>
+
+                                <div style={classes.uploadContentDiv}>
+                                    <div style={classes.uploadImgDiv} className="d-flex justify-content-center">
+                                        <Image src={imageHolder} alt="Image Placeholder" height={50} width={50} />
+                                    </div>
+                                    <br />
+                                    <h4 style={classes.dragFileText} className="text-center">Drag and Drop Files</h4>
                                     <div id="imageUpload">
                                         <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
                                     </div>
