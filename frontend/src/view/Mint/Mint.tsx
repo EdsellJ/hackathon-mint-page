@@ -15,8 +15,6 @@ import two from 'assets/png/two.png';
 import three from 'assets/png/three.png';
 import smallLogo from 'assets/png/small.png';
 
-import styles from '../../styles/styles.mint.css';
-
 const BN = require("bn.js");
 // ----------------------------------------------------------
 const fileTypes = ["JPG", "PNG", "GIF"];
