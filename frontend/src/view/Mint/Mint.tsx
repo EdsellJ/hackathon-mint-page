@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import skills from './skills_updated.json';
 import Select from 'react-select';
+import { TagsInput } from "react-tag-input-component";
 
 import { transactions } from "near-api-js";
 
@@ -13,13 +14,10 @@ import imageHolder from 'assets/png/imageHolder.png';
 import one from 'assets/png/One.png';
 import two from 'assets/png/two.png';
 import three from 'assets/png/three.png';
-import smallLogo from 'assets/png/small.png';
+// import smallLogo from 'assets/png/small.png';
 
-<<<<<<< HEAD
-=======
-// import styles from '../../styles/styles.mint.css';
+// import styles from '../../styles/Mint.module.css';
 
->>>>>>> 195d3fbe925ed969ef1465860b2913eb4184a5e9
 const BN = require("bn.js");
 // ----------------------------------------------------------
 const fileTypes = ["JPG", "PNG", "GIF"];
@@ -31,6 +29,9 @@ export default function Mint() {
     const [file, setFile] = useState(null);
     const [newBlob, setNewBlob] = useState<any>(undefined);
     const [roles, setRoles] = useState('');
+    const [idTags, setIdTags] = useState(["example.testnet"]);
+    const [links, setLinks] = useState(["example@github.com"]);
+
 
     let num: any = 0;
     let nft: any;
@@ -158,7 +159,7 @@ export default function Mint() {
 
         },
         uploadContentDiv: {
-            border: '2px solid black',
+            border: '1px solid grey',
             padding: 50,
 
         },
@@ -192,12 +193,18 @@ export default function Mint() {
             color: '#404471',
             fontWeight: 'bold',
             marginBottom: '2%'
-        }
+        },
+        textarea: {
+            maxWidth: '100%'
+        },
+        span: {
+            fontSize: 14,
+            fontWeight: 'normal'
+        },
     }
 
     return (
         <div>
-            {/* <Image src={smallLogo} /> */}
             <div className="d-flex justify-content-center">
                 <div className="col-sm-6">
                     <div className="card mt-5 p-2 shadow shadow-intensity-xl">
@@ -216,7 +223,14 @@ export default function Mint() {
                                     <br />
                                     <label style={classes.label}>Assessment</label>
                                     <br />
-                                    <textarea id="description" name="description" placeholder=" What actions were performed to earn this badge..." rows={8} cols={70} />
+                                    <textarea style={classes.textarea} id="description" name="description" placeholder=" What actions were performed to earn this badge..." rows={8} cols={70} />
+                                    <br />
+                                    <label style={classes.label}>NEAR IDs <span style={classes.span}>(Please enter students' NEAR IDs)</span></label>
+                                    <TagsInput
+                                        value={idTags}
+                                        onChange={setIdTags}
+                                        name="tags"
+                                    />
                                 </form>
 
                                 <div className="row mt-5">
@@ -225,7 +239,7 @@ export default function Mint() {
                                 </div>
 
                                 <div style={classes.form}>
-                                    <Select options={skillTitles} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '2px solid #404471', borderRadius: 25 }), }} placeholder="Select a skill..." />
+                                    <Select options={skillTitles} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '1px solid grey', borderRadius: 25 }), }} placeholder="Select a skill..." />
                                 </div>
 
                                 <div className="row mt-5">
@@ -235,7 +249,7 @@ export default function Mint() {
 
                                 <br />
                                 <div>
-                                    <h5 style={{ color: '#404471' }}>Upload Badge Art</h5>
+                                    <label style={classes.label}>Upload Badge Art</label>
                                 </div>
 
                                 <div style={classes.uploadContentDiv}>
@@ -251,18 +265,14 @@ export default function Mint() {
 
                                 <br />
                                 <div>
-                                    <h5 style={{ color: '#404471' }}>Upload Associated Work <span style={{ fontSize: 15 }}>(Documentation of materials used in class)</span></h5>
-                                </div>
-
-                                <div style={classes.uploadContentDiv}>
-                                    <div style={classes.uploadImgDiv} className="d-flex justify-content-center">
-                                        <Image src={imageHolder} alt="Image Placeholder" height={50} width={50} />
-                                    </div>
-                                    <br />
-                                    <h4 style={classes.dragFileText} className="text-center">Drag and Drop Files</h4>
-                                    <div id="imageUpload">
-                                        <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
-                                    </div>
+                                    <form>
+                                        <label style={classes.label}>Upload Associated Work <span style={classes.span}>(Documentation of materials used in class)</span></label>
+                                        <TagsInput
+                                            value={links}
+                                            onChange={setLinks}
+                                            name="links"
+                                        />
+                                    </form>
                                 </div>
                             </div>
                         </div>
