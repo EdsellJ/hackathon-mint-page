@@ -7,7 +7,7 @@ import Logo from "assets/png/navLogo.png";
 //--------------------------------------------------------------------
 
 const NavBar = (props: any) => {
-    const classes= {
+    const classes = {
         button: {
             width: "150px",
             height: "40px",
@@ -26,21 +26,18 @@ const NavBar = (props: any) => {
                 </a>
                 <ul className="navbar-nav ms-auto">
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Job Board</a>
-                    </li>
-                    <li className="nav-item">
                         <a className="nav-link" href="#">Mint NFTs</a>
                     </li>
                     <button style={classes.button} onClick={window?.walletConnection?.isSignedIn() ? logout : login}>
-                            {window?.walletConnection?.isSignedIn()
-                                ? window.accountId.substr(0, 5) +
-                                "..." +
-                                window.accountId.substr(
-                                    window.accountId.length - 4,
-                                    window.accountId.length
-                                )
-                                : "Wallet Connect"}
-                        </button>
+                        {window?.walletConnection?.isSignedIn()
+                            ? window.accountId.substr(0, 5) +
+                            "..." +
+                            window.accountId.substr(
+                                window.accountId.length - 4,
+                                window.accountId.length
+                            )
+                            : "Wallet Connect"}
+                    </button>
                 </ul>
             </div>
         </nav>

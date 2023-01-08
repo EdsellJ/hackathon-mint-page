@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import skills from './skills_updated.json';
 import Select from 'react-select';
+import { TagsInput } from "react-tag-input-component";
 
 import { transactions } from "near-api-js";
 
@@ -13,13 +14,10 @@ import imageHolder from 'assets/png/imageHolder.png';
 import one from 'assets/png/One.png';
 import two from 'assets/png/two.png';
 import three from 'assets/png/three.png';
-import smallLogo from 'assets/png/small.png';
+// import smallLogo from 'assets/png/small.png';
 
-<<<<<<< HEAD
-=======
-// import styles from '../../styles/styles.mint.css';
+// import styles from '../../styles/Mint.module.css';
 
->>>>>>> 195d3fbe925ed969ef1465860b2913eb4184a5e9
 const BN = require("bn.js");
 // ----------------------------------------------------------
 const fileTypes = ["JPG", "PNG", "GIF"];
@@ -31,6 +29,9 @@ export default function Mint() {
     const [file, setFile] = useState(null);
     const [newBlob, setNewBlob] = useState<any>(undefined);
     const [roles, setRoles] = useState('');
+    const [idTags, setIdTags] = useState<any>(undefined);
+    const [links, setLinks] = useState<any>(undefined);
+
 
     let num: any = 0;
     let nft: any;
@@ -137,6 +138,8 @@ export default function Mint() {
         }
     }
 
+    console.log(links)
+
     const classes = {
         title: {
             color: '#404471',
@@ -158,9 +161,8 @@ export default function Mint() {
 
         },
         uploadContentDiv: {
-            border: '2px solid black',
+            border: '1px solid grey',
             padding: 50,
-
         },
         dragFileText: {
             marginBottom: '15%',
@@ -184,30 +186,40 @@ export default function Mint() {
         },
         info: {
             color: '#404471',
-            marginTop: '-4.5%',
-            marginLeft: '4.5%',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
         },
         label: {
             color: '#404471',
             fontWeight: 'bold',
             marginBottom: '2%'
-        }
+        },
+        textarea: {
+            maxWidth: '100%'
+        },
+        span: {
+            fontSize: 14,
+            fontWeight: 'normal'
+        },
     }
 
     return (
         <div>
-            {/* <Image src={smallLogo} /> */}
             <div className="d-flex justify-content-center">
-                <div className="col-sm-6">
+                <div className="container-fluid" style={{ maxWidth: '50%' }}>
                     <div className="card mt-5 p-2 shadow shadow-intensity-xl">
                         <div className="card-body">
                             <div className="card-block">
                                 <h1 className="card-title mt-2" style={classes.title}>Mint a Badge</h1>
 
-                                <div className="row mt-4">
-                                    <Image src={one} height={30} width={30} />
-                                    <h4 style={classes.info}>Information</h4>
+                                <div className="container-fluid">
+                                    <div className="row gx-0 mt-5">
+                                        <div className="col-1">
+                                            <Image src={one} height={30} width={30} />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <h4 style={classes.info}>Information</h4>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <form action="" method="post" style={classes.form}>
@@ -216,26 +228,47 @@ export default function Mint() {
                                     <br />
                                     <label style={classes.label}>Assessment</label>
                                     <br />
-                                    <textarea id="description" name="description" placeholder=" What actions were performed to earn this badge..." rows={8} cols={70} />
+                                    <textarea style={classes.textarea} id="description" name="description" placeholder=" What actions were performed to earn this badge..." rows={8} cols={70} />
+                                    <br />
+                                    <label style={classes.label}>NEAR IDs <span style={classes.span}>(Please enter students' NEAR IDs)</span></label>
+                                    <TagsInput
+                                        value={idTags}
+                                        onChange={setIdTags}
+                                        name="tags"
+                                        placeHolder="example.testnet"
+                                    />
                                 </form>
 
-                                <div className="row mt-5">
-                                    <Image src={two} height={30} width={30} />
-                                    <h4 style={classes.info}>Add Associated Skill</h4>
+                                <div className="container-fluid">
+                                    <div className="row gx-0 mt-5">
+                                        <div className="col-1">
+                                            <Image src={two} height={30} width={30} />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <h4 style={classes.info}>Add Associated Skill</h4>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div style={classes.form}>
-                                    <Select options={skillTitles} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '2px solid #404471', borderRadius: 25 }), }} placeholder="Select a skill..." />
+                                    <Select options={skillTitles} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '1px solid grey', borderRadius: 25 }), }} placeholder="Select a skill..." />
                                 </div>
 
-                                <div className="row mt-5">
-                                    <Image src={three} height={30} width={30} />
-                                    <h4 style={classes.info}>Upload</h4>
+
+                                <div className="container-fluid">
+                                    <div className="row gx-0 mt-5">
+                                        <div className="col-1">
+                                            <Image src={three} height={30} width={30} />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <h4 style={classes.info}>Upload</h4>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <br />
                                 <div>
-                                    <h5 style={{ color: '#404471' }}>Upload Badge Art</h5>
+                                    <label style={classes.label}>Upload Badge Art</label>
                                 </div>
 
                                 <div style={classes.uploadContentDiv}>
@@ -244,25 +277,22 @@ export default function Mint() {
                                     </div>
                                     <br />
                                     <h4 style={classes.dragFileText} className="text-center">Drag and Drop Files</h4>
-                                    <div id="imageUpload">
+                                    <div id="imageUpload" className="d-flex justify-content-center">
                                         <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
                                     </div>
                                 </div>
 
                                 <br />
                                 <div>
-                                    <h5 style={{ color: '#404471' }}>Upload Associated Work <span style={{ fontSize: 15 }}>(Documentation of materials used in class)</span></h5>
-                                </div>
-
-                                <div style={classes.uploadContentDiv}>
-                                    <div style={classes.uploadImgDiv} className="d-flex justify-content-center">
-                                        <Image src={imageHolder} alt="Image Placeholder" height={50} width={50} />
-                                    </div>
-                                    <br />
-                                    <h4 style={classes.dragFileText} className="text-center">Drag and Drop Files</h4>
-                                    <div id="imageUpload">
-                                        <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
-                                    </div>
+                                    <form>
+                                        <label style={classes.label}>Upload Associated Work <span style={classes.span}>(Documentation of materials used in class)</span></label>
+                                        <TagsInput
+                                            value={links}
+                                            onChange={setLinks}
+                                            name="links"
+                                            placeHolder="example@github.com"
+                                        />
+                                    </form>
                                 </div>
                             </div>
                         </div>
