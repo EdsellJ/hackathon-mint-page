@@ -14,7 +14,7 @@ import imageHolder from 'assets/png/imageHolder.png';
 import one from 'assets/png/One.png';
 import two from 'assets/png/two.png';
 import three from 'assets/png/three.png';
-// import smallLogo from 'assets/png/small.png';
+import smallLogo from 'assets/png/small.png';
 
 // import styles from '../../styles/Mint.module.css';
 
@@ -209,7 +209,10 @@ export default function Mint() {
                     <div className="card mt-5 p-2 shadow shadow-intensity-xl">
                         <div className="card-body">
                             <div className="card-block">
-                                <h1 className="card-title mt-2" style={classes.title}>Mint a Badge</h1>
+                                <div className="row">
+                                    <h1 className="card-title mt-3 col-md-9" style={classes.title}>Create a Badge</h1>
+                                    <Image src={smallLogo} className="col-md-6 p-2" width={100} height={85} style={{opacity: .5, maxWidth: '100%'}}/>
+                                </div>
 
                                 <div className="container-fluid">
                                     <div className="row gx-0 mt-5">
@@ -229,6 +232,7 @@ export default function Mint() {
                                     <label style={classes.label}>Assessment</label>
                                     <br />
                                     <textarea style={classes.textarea} id="description" name="description" placeholder=" What actions were performed to earn this badge..." rows={8} cols={70} />
+                                    <br />
                                     <br />
                                     <label style={classes.label}>NEAR IDs <span style={classes.span}>(Please enter students' NEAR IDs)</span></label>
                                     <TagsInput
@@ -290,7 +294,7 @@ export default function Mint() {
                                             value={links}
                                             onChange={setLinks}
                                             name="links"
-                                            placeHolder="example@github.com"
+                                            placeHolder="github.com/example"
                                         />
                                     </form>
                                 </div>
@@ -302,7 +306,7 @@ export default function Mint() {
 
             <br />
             <div className="mint text-center">
-                <button style={classes.mintButton} onClick={mintNFT}>Mint Badge</button>
+                <button style={classes.mintButton} onClick={mintNFT}>Create Badge</button>
             </div>
         </div>
     );
