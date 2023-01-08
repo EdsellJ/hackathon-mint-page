@@ -1,12 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import { login, logout } from "near/utils";
+import { useRouter } from "next/router";
 
 // @assets
 import Logo from "assets/png/navLogo.png";
 //--------------------------------------------------------------------
 
 const NavBar = (props: any) => {
+
+    const router = useRouter();
+
     const classes = {
         button: {
             width: "150px",
@@ -20,13 +24,13 @@ const NavBar = (props: any) => {
 
     return (
         <nav className="navbar navbar-expand-sm shadow">
-            <div className="container">
-                <a className="navbar-brand" href="#">
+            <div className="container-fluid">
+                <a className="navbar-brand" onClick={() => router.reload()} href={'#'}>
                     <Image src={Logo} alt="EduCoin Logo" width={150} height={45} />
                 </a>
                 <ul className="navbar-nav ms-auto">
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Mint NFTs</a>
+                        <a className="nav-link" href={'#'}>Badge Creator</a>
                     </li>
                     <button style={classes.button} onClick={window?.walletConnection?.isSignedIn() ? logout : login}>
                         {window?.walletConnection?.isSignedIn()
