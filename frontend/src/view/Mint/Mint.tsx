@@ -29,8 +29,8 @@ export default function Mint() {
     const [file, setFile] = useState(null);
     const [newBlob, setNewBlob] = useState<any>(undefined);
     const [roles, setRoles] = useState('');
-    const [idTags, setIdTags] = useState(["example.testnet"]);
-    const [links, setLinks] = useState(["example@github.com"]);
+    const [idTags, setIdTags] = useState<any>(undefined);
+    const [links, setLinks] = useState<any>(undefined);
 
 
     let num: any = 0;
@@ -138,6 +138,8 @@ export default function Mint() {
         }
     }
 
+    console.log(links)
+
     const classes = {
         title: {
             color: '#404471',
@@ -161,7 +163,6 @@ export default function Mint() {
         uploadContentDiv: {
             border: '1px solid grey',
             padding: 50,
-
         },
         dragFileText: {
             marginBottom: '15%',
@@ -185,9 +186,7 @@ export default function Mint() {
         },
         info: {
             color: '#404471',
-            marginTop: '-4.5%',
-            marginLeft: '4.5%',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
         },
         label: {
             color: '#404471',
@@ -206,15 +205,21 @@ export default function Mint() {
     return (
         <div>
             <div className="d-flex justify-content-center">
-                <div className="col-sm-6">
+                <div className="container-fluid" style={{ maxWidth: '50%' }}>
                     <div className="card mt-5 p-2 shadow shadow-intensity-xl">
                         <div className="card-body">
                             <div className="card-block">
                                 <h1 className="card-title mt-2" style={classes.title}>Mint a Badge</h1>
 
-                                <div className="row mt-4">
-                                    <Image src={one} height={30} width={30} />
-                                    <h4 style={classes.info}>Information</h4>
+                                <div className="container-fluid">
+                                    <div className="row gx-0 mt-5">
+                                        <div className="col-1">
+                                            <Image src={one} height={30} width={30} />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <h4 style={classes.info}>Information</h4>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <form action="" method="post" style={classes.form}>
@@ -230,21 +235,35 @@ export default function Mint() {
                                         value={idTags}
                                         onChange={setIdTags}
                                         name="tags"
+                                        placeHolder="example.testnet"
                                     />
                                 </form>
 
-                                <div className="row mt-5">
-                                    <Image src={two} height={30} width={30} />
-                                    <h4 style={classes.info}>Add Associated Skill</h4>
+                                <div className="container-fluid">
+                                    <div className="row gx-0 mt-5">
+                                        <div className="col-1">
+                                            <Image src={two} height={30} width={30} />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <h4 style={classes.info}>Add Associated Skill</h4>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div style={classes.form}>
                                     <Select options={skillTitles} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '1px solid grey', borderRadius: 25 }), }} placeholder="Select a skill..." />
                                 </div>
 
-                                <div className="row mt-5">
-                                    <Image src={three} height={30} width={30} />
-                                    <h4 style={classes.info}>Upload</h4>
+
+                                <div className="container-fluid">
+                                    <div className="row gx-0 mt-5">
+                                        <div className="col-1">
+                                            <Image src={three} height={30} width={30} />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <h4 style={classes.info}>Upload</h4>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <br />
@@ -258,7 +277,7 @@ export default function Mint() {
                                     </div>
                                     <br />
                                     <h4 style={classes.dragFileText} className="text-center">Drag and Drop Files</h4>
-                                    <div id="imageUpload">
+                                    <div id="imageUpload" className="d-flex justify-content-center">
                                         <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
                                     </div>
                                 </div>
@@ -271,6 +290,7 @@ export default function Mint() {
                                             value={links}
                                             onChange={setLinks}
                                             name="links"
+                                            placeHolder="example@github.com"
                                         />
                                     </form>
                                 </div>
