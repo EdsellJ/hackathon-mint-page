@@ -198,8 +198,9 @@ export default function Mint() {
         },
         span: {
             fontSize: 14,
-            fontWeight: 'normal'
-        },
+            fontWeight: 'normal',
+            color: '#404471'
+        }
     }
 
     return (
@@ -211,7 +212,7 @@ export default function Mint() {
                             <div className="card-block">
                                 <div className="row">
                                     <h1 className="card-title mt-3 col-md-9" style={classes.title}>Create a Badge</h1>
-                                    <Image src={smallLogo} className="col-md-6 p-2" width={100} height={85} style={{opacity: .5, maxWidth: '100%'}}/>
+                                    <Image src={smallLogo} className="col-md-6 p-2" width={100} height={85} style={{ opacity: .5, maxWidth: '100%' }} />
                                 </div>
 
                                 <div className="container-fluid">
@@ -241,6 +242,7 @@ export default function Mint() {
                                         name="tags"
                                         placeHolder="example.testnet"
                                     />
+                                    <p className="m-2" style={classes.span}>press enter to add multiple IDs</p>
                                 </form>
 
                                 <div className="container-fluid">
