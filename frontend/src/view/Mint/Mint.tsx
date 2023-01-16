@@ -235,14 +235,13 @@ export default function Mint() {
                                     <textarea style={classes.textarea} id="description" name="description" placeholder=" What actions were performed to earn this badge..." rows={8} cols={70} />
                                     <br />
                                     <br />
-                                    <label style={classes.label}>NEAR IDs <span style={classes.span}>(Please enter students' NEAR IDs)</span></label>
+                                    <label style={classes.label}>STUDENT NEAR IDs <span style={classes.span}>(press enter to add multiple IDs)</span></label>
                                     <TagsInput
                                         value={idTags}
                                         onChange={setIdTags}
                                         name="tags"
                                         placeHolder="example.testnet"
                                     />
-                                    <p className="m-2" style={classes.span}>press enter to add multiple IDs</p>
                                 </form>
 
                                 <div className="container-fluid">
@@ -291,7 +290,7 @@ export default function Mint() {
                                 <br />
                                 <div>
                                     <form>
-                                        <label style={classes.label}>Upload Associated Work <span style={classes.span}>(Documentation of materials used in class)</span></label>
+                                        <label style={classes.label}>Link Proof of Work <span style={classes.span}>(Documentation of materials used in class)</span></label>
                                         <TagsInput
                                             value={links}
                                             onChange={setLinks}
