@@ -1,4 +1,4 @@
-const CONTRACT_NAME = "haiiertest.testnet";
+const CONTRACT_NAME = process.env.CONTRACT_NAME || "educoin-near-lazy-minting-contract.edsell.testnet";
 
 const getConfig = (env: string) => {
   switch (env) {
