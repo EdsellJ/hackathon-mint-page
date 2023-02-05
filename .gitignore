@@ -42,7 +42,7 @@ Cargo.lock
 **/*.rs.bk
 
 frontend/node_modules
-contract/target/*
-frontend/.next/*
-frontend/out/*
-node_modules/*
+contract/target/
+frontend/.next/
+frontend/out/
+node_modules/
