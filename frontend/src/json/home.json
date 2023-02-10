@@ -1,0 +1,25 @@
+{
+	"main": {
+		"question": "What's EduCoin?",
+		"answer": "Educoin helps students and teachers accomplish their goals through blockchain technology."
+	},
+	"students": {
+		"title": "Students",
+		"icon": "/images/student_icon.svg",
+		"features": [
+			{ "icon": "/images/discover_content.svg", "title": "Discover Content" },
+			{ "icon": "/images/take_classes.svg", "title": "Take Classes" },
+			{ "icon": "/images/badge.svg", "title": "Earn Badges" },
+			{ "icon": "/images/generate_resume.svg", "title": "Generate Resume" }
+		]
+	},
+	"teachers": {
+		"title": "Teachers",
+		"icon": "/images/teacher.svg",
+		"features": [
+			{ "icon": "/images/sell_courses.svg", "title": "Sell Courses" },
+			{ "icon": "/images/teach_classes.svg", "title": "Teach Classes" },
+			{ "icon": "/images/issue_badges.svg", "title": "Issue Badges" }
+		]
+	}
+}
