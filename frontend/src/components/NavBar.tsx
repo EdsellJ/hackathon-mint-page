@@ -36,7 +36,7 @@ const NavBar = (props: any) => {
                 <ul className="navbar-nav ms-auto">
                     <li className="nav-item">
                         <Link style={classes.navLink} href='/'>
-                            <button className="btn">Badge Creator</button>
+                            <button className="btn">Send a Badge</button>
                         </Link>
                     </li>
                     <li className="nav-item">
