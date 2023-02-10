@@ -36,12 +36,12 @@ const NavBar = (props: any) => {
                 <ul className="navbar-nav ms-auto">
                     <li className="nav-item">
                         <Link style={classes.navLink} href='/'>
-                            <button className="btn">Send a Badge</button>
+                            <button className="btn">Send Badge</button>
                         </Link>
                     </li>
                     <li className="nav-item">
                         <Link style={classes.navLink} href='/series'>
-                            <button className="btn">Design a Badge</button>
+                            <button className="btn">Design Badge</button>
                         </Link>
                     </li>
                     <button style={classes.button} onClick={window?.walletConnection?.isSignedIn() ? logout : login}>
