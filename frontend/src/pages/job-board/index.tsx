@@ -1,4 +1,4 @@
-import NFTLayout from "layouts/NFTLayout";
+import Layout from "layouts";
 import Filter from "components/Filter";
 import JobGrid from "components/JobGrid";
 import Search from "components/Search";
@@ -9,7 +9,7 @@ export default function JobBoard() {
 	const { scroll } = useScroll();
 	const { status, result } = useSearch();
 	return (
-		<NFTLayout title="Job board" className="jobboard pb-14">
+		<Layout title="Job board" className="jobboard pb-14">
 			<section className="container mt-2">
 				<Search />
 				<div className="view space-x-10 mt-2 flex relative items-start justify-between">
@@ -17,6 +17,6 @@ export default function JobBoard() {
 					<JobGrid scroll={scroll} status={status} jobs={result} />
 				</div>
 			</section>
-		</NFTLayout>
+		</Layout>
 	);
 }
