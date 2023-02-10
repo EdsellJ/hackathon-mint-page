@@ -198,8 +198,9 @@ export default function Mint() {
         },
         span: {
             fontSize: 14,
-            fontWeight: 'normal'
-        },
+            fontWeight: 'normal',
+            color: '#404471'
+        }
     }
 
     return (
@@ -211,7 +212,7 @@ export default function Mint() {
                             <div className="card-block">
                                 <div className="row">
                                     <h1 className="card-title mt-3 col-md-9" style={classes.title}>Create a Badge</h1>
-                                    <Image src={smallLogo} className="col-md-6 p-2" width={100} height={85} style={{opacity: .5, maxWidth: '100%'}}/>
+                                    <Image src={smallLogo} className="col-md-6 p-2" width={100} height={85} style={{ opacity: .5, maxWidth: '100%' }} />
                                 </div>
 
                                 <div className="container-fluid">
@@ -234,7 +235,7 @@ export default function Mint() {
                                     <textarea style={classes.textarea} id="description" name="description" placeholder=" What actions were performed to earn this badge..." rows={8} cols={70} />
                                     <br />
                                     <br />
-                                    <label style={classes.label}>NEAR IDs <span style={classes.span}>(Please enter students' NEAR IDs)</span></label>
+                                    <label style={classes.label}>STUDENT NEAR IDs <span style={classes.span}>(press enter to add multiple IDs)</span></label>
                                     <TagsInput
                                         value={idTags}
                                         onChange={setIdTags}
@@ -289,7 +290,7 @@ export default function Mint() {
                                 <br />
                                 <div>
                                     <form>
-                                        <label style={classes.label}>Upload Associated Work <span style={classes.span}>(Documentation of materials used in class)</span></label>
+                                        <label style={classes.label}>Link Proof of Work <span style={classes.span}>(Documentation of materials used in class)</span></label>
                                         <TagsInput
                                             value={links}
                                             onChange={setLinks}
