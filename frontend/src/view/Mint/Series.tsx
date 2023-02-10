@@ -2,20 +2,22 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import skills from './skills_updated.json';
 import Select from 'react-select';
-import { TagsInput } from "react-tag-input-component";
 
 import { transactions } from "near-api-js";
 
 import { useSupplyContext } from "context/SupplyContext";
+import { FileUploader } from "react-drag-drop-files";
 import { NFTStorage, File, Blob } from 'nft.storage'
 
+import imageHolder from 'assets/png/imageHolder.png';
 import one from 'assets/png/One.png';
+import two from 'assets/png/two.png';
 import smallLogo from 'assets/png/small.png';
 
 const BN = require("bn.js");
 // ----------------------------------------------------------
-
-export default function Mint() {
+const fileTypes = ["JPG", "PNG", "GIF"];
+export default function Series() {
 
     const { totalSupply } = useSupplyContext();
     const [mintable, setMintable] = useState(5777);
@@ -23,7 +25,6 @@ export default function Mint() {
     const [file, setFile] = useState(null);
     const [newBlob, setNewBlob] = useState<any>(undefined);
     const [roles, setRoles] = useState('');
-    const [idTags, setIdTags] = useState<any>(undefined);
     const [links, setLinks] = useState<any>(undefined);
 
     let nft: any;
@@ -56,6 +57,17 @@ export default function Mint() {
         var blob = new Blob([ab], { type: mimeString });
         return blob;
     }
+
+    const handleChange = (file: any) => {
+        setFile(file);
+        nft = file;
+        console.log("nft", nft);
+        var reader = new FileReader();
+        reader.onload = async () => {
+            setNewBlob(await dataURItoBlob(reader.result));
+        };
+        reader.readAsDataURL(file);
+    };
 
     const getRole = (e: any) => {
 
@@ -190,7 +202,7 @@ export default function Mint() {
                         <div className="card-body">
                             <div className="card-block">
                                 <div className="row">
-                                    <h1 className="card-title mt-3 col-md-9" style={classes.title}>Create a Badge</h1>
+                                    <h1 className="card-title mt-3 col-md-9" style={classes.title}>Create Series</h1>
                                     <Image src={smallLogo} className="col-md-6 p-2" width={100} height={85} style={{ opacity: .5, maxWidth: '100%' }} />
                                 </div>
 
@@ -210,16 +222,42 @@ export default function Mint() {
                                 </div>
 
                                 <form action="" method="post" style={classes.form}>
+                                    <label style={classes.label}>Assessment</label>
                                     <br />
-                                    <label style={classes.label}>STUDENT NEAR IDs <span style={classes.span}>(press enter to add multiple IDs)</span></label>
-                                    <TagsInput
-                                        value={idTags}
-                                        onChange={setIdTags}
-                                        name="tags"
-                                        placeHolder="example.testnet"
-                                    />
+                                    <textarea style={classes.textarea} id="description" name="description" placeholder=" What actions were performed to earn this badge..." rows={8} cols={70} />
+                                    <br />
                                 </form>
 
+
+
+
+
+                                <div className="container-fluid">
+                                    <div className="row gx-0 mt-5">
+                                        <div className="col-1">
+                                            <Image src={two} height={30} width={30} />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <h4 style={classes.info}>Upload</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br />
+                                <div>
+                                    <label style={classes.label}>Upload Badge Art</label>
+                                </div>
+
+                                <div style={classes.uploadContentDiv}>
+                                    <div style={classes.uploadImgDiv} className="d-flex justify-content-center">
+                                        <Image src={imageHolder} alt="Image Placeholder" height={50} width={50} />
+                                    </div>
+                                    <br />
+                                    <h4 style={classes.dragFileText} className="text-center">Drag and Drop Files</h4>
+                                    <div id="imageUpload" className="d-flex justify-content-center">
+                                        <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -228,7 +266,7 @@ export default function Mint() {
 
             <br />
             <div className="mint text-center">
-                <button style={classes.mintButton} onClick={mintNFT}>Create Badge</button>
+                <button style={classes.mintButton} onClick={mintNFT}>Create Series</button>
             </div>
         </div>
     );
