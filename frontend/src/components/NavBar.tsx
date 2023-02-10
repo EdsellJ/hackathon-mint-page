@@ -41,7 +41,7 @@ const NavBar = (props: any) => {
                     </li>
                     <li className="nav-item">
                         <Link style={classes.navLink} href='/series'>
-                            <button className="btn">Series Creator</button>
+                            <button className="btn">Design a Badge</button>
                         </Link>
                     </li>
                     <button style={classes.button} onClick={window?.walletConnection?.isSignedIn() ? logout : login}>

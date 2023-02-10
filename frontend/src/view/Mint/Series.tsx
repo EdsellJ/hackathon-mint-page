@@ -202,7 +202,7 @@ export default function Series() {
                         <div className="card-body">
                             <div className="card-block">
                                 <div className="row">
-                                    <h1 className="card-title mt-3 col-md-9" style={classes.title}>Create Series</h1>
+                                    <h1 className="card-title mt-3 col-md-9" style={classes.title}>Design a Badge</h1>
                                     <Image src={smallLogo} className="col-md-6 p-2" width={100} height={85} style={{ opacity: .5, maxWidth: '100%' }} />
                                 </div>
 
@@ -266,7 +266,7 @@ export default function Series() {
 
             <br />
             <div className="mint text-center">
-                <button style={classes.mintButton} onClick={mintNFT}>Create Series</button>
+                <button style={classes.mintButton} onClick={mintNFT}>Create Design</button>
             </div>
         </div>
     );
