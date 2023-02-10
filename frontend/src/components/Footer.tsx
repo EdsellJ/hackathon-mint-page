@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import links from "config/footer.json";
+import links from "json/footer.json";
 
 const Footer = () => {
 	return (

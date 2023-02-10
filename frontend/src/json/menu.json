@@ -1,0 +1,11 @@
+{
+	"link": {
+		"text": "Badge Creator",
+		"link": "/badge-creator"
+	},
+
+	"auth": {
+		"text": "Job Board",
+		"link": "/job-board"
+	}
+}
