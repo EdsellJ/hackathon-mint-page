@@ -23,9 +23,9 @@ export default function HeroBanner() {
 						</Link>
 					</div>
 					<div className="right images flex flex-col w-1/2 ">
-						<img src="/images/banner-icon-2.svg" className="w-1/2 ml-60" alt="banner-2" />
+						<img src="/assets/banner-icon-2.svg" className="w-1/2 ml-60" alt="banner-2" />
 						<img
-							src="/images/banner-icon.svg"
+							src="/assets/banner-icon.svg"
 							className="w-1/2 -mt-14 ml-14"
 							alt="banner"
 						/>
