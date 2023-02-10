@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { login, logout } from "near/utils";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 // @assets
 import Logo from "assets/png/navLogo.png";
@@ -20,6 +21,10 @@ const NavBar = (props: any) => {
             color: 'white',
             marginLeft: 10,
         },
+        navLink: {
+            
+
+        }
     }
 
     return (
@@ -30,7 +35,14 @@ const NavBar = (props: any) => {
                 </a>
                 <ul className="navbar-nav ms-auto">
                     <li className="nav-item">
-                        <a className="nav-link" href={'#'}>Badge Creator</a>
+                        <Link style={classes.navLink} href='/'>
+                            <button className="btn">Badge Creator</button>
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link style={classes.navLink} href='/series'>
+                            <button className="btn">Series Creator</button>
+                        </Link>
                     </li>
                     <button style={classes.button} onClick={window?.walletConnection?.isSignedIn() ? logout : login}>
                         {window?.walletConnection?.isSignedIn()
