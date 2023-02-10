@@ -190,7 +190,7 @@ export default function Mint() {
                         <div className="card-body">
                             <div className="card-block">
                                 <div className="row">
-                                    <h1 className="card-title mt-3 col-md-9" style={classes.title}>Create a Badge</h1>
+                                    <h1 className="card-title mt-3 col-md-9" style={classes.title}>Send a Badge</h1>
                                     <Image src={smallLogo} className="col-md-6 p-2" width={100} height={85} style={{ opacity: .5, maxWidth: '100%' }} />
                                 </div>
 
@@ -228,7 +228,7 @@ export default function Mint() {
 
             <br />
             <div className="mint text-center">
-                <button style={classes.mintButton} onClick={mintNFT}>Create Badge</button>
+                <button style={classes.mintButton} onClick={mintNFT}>Send Badge</button>
             </div>
         </div>
     );
