@@ -29,7 +29,9 @@ export default function JobboardDetailsView() {
         {status === "error" ? (
           <p>unable to fetch job details</p>
         ) : status === "loading" ? (
-          <SpinnerRipple centerRipple />
+          <div className="d-flex justify-content-center">
+            <SpinnerRipple />
+          </div>
         ) : (
           jobDetails && <JobDetails jobDetails={jobDetails} />
         )}

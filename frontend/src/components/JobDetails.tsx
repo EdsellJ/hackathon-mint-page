@@ -12,7 +12,7 @@ export default function JobDetails({ jobDetails }: Props) {
       <div className="button-group mt-4 d-flex align-items-center justify-content-between">
         <div className="company d-flex align-items-center">
           <img
-            src="/images/company.png"
+            src="/assets/company.png"
             className="w-1/5 mr-1"
             alt="job role"
           />
@@ -29,7 +29,7 @@ export default function JobDetails({ jobDetails }: Props) {
       </div>
       <div className="title-row flex items-center">
         <img
-          src="/images/briefcase.png"
+          src="/assets/briefcase.png"
           className="w-1/12 mr-4"
           alt="job role"
           height="50px"
@@ -38,7 +38,7 @@ export default function JobDetails({ jobDetails }: Props) {
         <h3 className="text-primary my-4">{jobDetails.title}</h3>
       </div>
       <h4 className="flex items-center mb-4">
-        <img src="/images/location.svg" alt="location" className="mr-2" />
+        <img src="/assets/location.svg" alt="location" className="mr-2" />
         {jobDetails.location}
       </h4>
       <div className="row-tag flex justify-between items-center">
