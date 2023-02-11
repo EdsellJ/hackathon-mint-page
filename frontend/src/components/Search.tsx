@@ -36,7 +36,7 @@ export default function Search() {
   }
 
   return (
-    <div className="search mb-4 d-flex w-full justify-content-between align-items-center">
+    <div className="container search mb-4 d-flex w-full justify-content-between align-items-center">
       <Button
         className="bg-deep-blue border-0 px-4 text-white py-2 rounded-pill hover-bg-primary"
         text="Post a Job"

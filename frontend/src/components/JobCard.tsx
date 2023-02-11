@@ -16,10 +16,10 @@ export default function JobCard({ job }: Props) {
       <div className="jobcard border h-52 bg-white rounded-4 border-gray py-5 px-4 hover:bg-lightgrey">
         <div className="top flex items-start justify-between">
           <div className="w-full">
-            <h5 className="text-lg text-primary font-bold truncate">
+            <h5 className="text-lg fw-bold text-deep-blue font-bold truncate">
               {job.title}
             </h5>
-            <p className="font-light text-primary mt-2">{job.company}</p>
+            <p className="font-light text-deep-blue mt-2">{job.company}</p>
             <ul className="gap-3 list-unstyled w-full d-flex overflow-scroll mt-4">
               {job.tags.map((item: string) => (
                 <li

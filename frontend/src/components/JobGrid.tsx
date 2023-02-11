@@ -10,10 +10,10 @@ interface Props {
 
 export default function JobGrid({ scroll, jobs, status }: Props) {
   const jobGridPosition =
-    Number(scroll) > 300 ? "position-absolute right-0 col-10" : "col-10";
+    Number(scroll) > 300 ? "position-absolute right-0" : "";
 
   return (
-    <div className={`jobgrid ${jobGridPosition} d-flex flex-column`}>
+    <div className={`jobgrid ${jobGridPosition} d-flex col-9 flex-column`}>
       {status === "error" ? (
         <p>Unable to fetch job due to an error</p>
       ) : status === "loading" ? (

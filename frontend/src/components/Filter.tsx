@@ -9,7 +9,7 @@ export default function Filter({ scroll }: Props) {
   const fixedSidebar = Number(scroll) > 300 ? "position-fixed" : "";
   return (
     <aside
-      className={`${fixedSidebar} bg-white p-4 w border col-2 text-black  border-gray rounded-3 position-static`}
+      className={`${fixedSidebar} bg-white p-4 border col-3 text-black  border-gray rounded-3 position-static`}
     >
       <h4 className="fs-3 fw-bold text-deep-blue ">Filter</h4>
       <h5 className="fw-4 fw-bold my-3 text-deep-blue">Salary</h5>

@@ -47,6 +47,10 @@ html {
   background-color: #babfff;
 }
 
+.light-bg {
+  background-color: #f5f5f5;
+}
+
 .font-lora {
   font-family: "Lora", serif;
 }
