@@ -1,4 +1,5 @@
 import Button from "components/Button";
+import Link from "next/link";
 
 export default function NFTHeroBanner() {
   return (
@@ -15,10 +16,12 @@ export default function NFTHeroBanner() {
           This token can be used to check references and validate proof of work
           and learned skills.
         </p>
-        <Button
-          text="Mint a Badge"
-          className="rounded-pill fw-bold bg-deep-blue py-3 text-white border px-5 text-secondary-500 mt-4"
-        />
+        <Link href="/mint">
+          <Button
+            text="Mint a Badge"
+            className="rounded-pill fw-bold bg-deep-blue py-3 text-white border px-5 text-secondary-500 mt-4"
+          />
+        </Link>
       </div>
       <div className="image col-6">
         <img src="/assets/woman.png" alt="woman minting nft" />
