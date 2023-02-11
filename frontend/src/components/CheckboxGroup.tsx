@@ -8,8 +8,8 @@ interface Props {
 
 export default function CheckboxGroup({ group, name, title }: Props) {
 	return (
-		<div className="checkboxGroup my-8">
-			<h5 className="text-lg font-bold my-4 text-primary">{title}</h5>
+		<div className="checkboxGroup">
+			<h5 className="text-lg fw-bold my-4 text-deep-blue">{title}</h5>
 			{group.map((item) => (
 				<Checkbox label={item.label} key={item.label} name={name} />
 			))}

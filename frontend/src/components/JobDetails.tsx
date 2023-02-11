@@ -9,8 +9,8 @@ interface Props {
 export default function JobDetails({ jobDetails }: Props) {
   return (
     <div className="job-details">
-      <div className="button-group mt-4 flex items-center justify-between">
-        <div className="company flex items-center">
+      <div className="button-group mt-4 d-flex align-items-center justify-content-between">
+        <div className="company d-flex align-items-center">
           <img
             src="/images/company.png"
             className="w-1/5 mr-1"
