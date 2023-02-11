@@ -39,6 +39,14 @@ html {
   color: #404471;
 }
 
+.start-65 {
+  left: 65px;
+}
+
+.filter .wrapper {
+  width: 330px;
+}
+
 .z-50 {
   z-index: 50;
 }

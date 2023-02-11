@@ -15,13 +15,13 @@ export default function JobGrid({ scroll, jobs, status }: Props) {
       : "position-absolute end-0";
 
   return (
-    <div className={`jobgrid ${jobGridPosition} d-flex col-9 flex-column`}>
+    <div className={`jobgrid position-relative end-0 d-flex col-9 flex-column`}>
       {status === "error" ? (
         <p>Unable to fetch job due to an error</p>
       ) : status === "loading" ? (
         <JobCardLoader />
       ) : typeof jobs === "object" && jobs.length > 0 ? (
-        <div className="justify-content-center d-flex gap-4 flex-wrap">
+        <div className="justify-content-center d-flex gap-4 flex-wrap position-  end-0 pb-5">
           {jobs?.map((job) => (
             <JobCard key={job.id} job={job} />
           ))}
