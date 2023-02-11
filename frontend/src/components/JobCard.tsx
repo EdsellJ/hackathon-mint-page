@@ -12,7 +12,7 @@ export default function JobCard({ job }: Props) {
   const jobSlug = toSlug(`${job.title}-at-${job.company}`);
   const postedDaysAgo = getJobPostDate(job.date);
   return (
-    <Link href={`/job-board/${jobSlug}`}>
+    <Link href={`/job-board/${jobSlug}`} className="text-decoration-none col-5">
       <div className="jobcard border h-52 bg-white rounded-4 border-gray py-5 px-4 hover:bg-lightgrey">
         <div className="top flex items-start justify-between">
           <div className="w-full">
@@ -20,11 +20,11 @@ export default function JobCard({ job }: Props) {
               {job.title}
             </h5>
             <p className="font-light text-primary mt-2">{job.company}</p>
-            <ul className="gap-4 list-unstyled d-flex overflow-scroll mt-4">
+            <ul className="gap-3 list-unstyled w-full d-flex overflow-scroll mt-4">
               {job.tags.map((item: string) => (
                 <li
                   key={item}
-                  className="rounded-pill my-1 whitespace-nowrap text-deep-blue font-light border px-5"
+                  className="rounded-pill my-1 text-deep-blue font-light border px-2"
                 >
                   {item}
                 </li>
@@ -32,10 +32,10 @@ export default function JobCard({ job }: Props) {
             </ul>
           </div>
         </div>
-        <div className="bottom mt-6 flex justify-between items-center">
-          <p className="text-primary font-thin">{postedDaysAgo}</p>
+        <div className="bottom mt-6 d-flex justify-content-between align-items-center">
+          <p className="text-deep-blue font-thin">{postedDaysAgo}</p>
           <img
-            src="/images/bookmark.png"
+            src="/assets/bookmark.png"
             alt="bookmark this job"
             className="w-3.5"
           />
@@ -47,7 +47,10 @@ export default function JobCard({ job }: Props) {
         }
         ul.list-unstyled li {
           text-decoration: none;
-          underline: none;
+          display: flex;
+          align-items: center;
+          width: fit-content;
+          white-space: nowrap;
         }
       `}</style>
     </Link>

@@ -12,7 +12,7 @@ export default function JobBoard() {
 		<Layout title="Job board" className="jobboard pb-5">
 			<section className="container mt-2">
 				<Search />
-				<div className="view mt-2 d-flex position-relative align-items-start justify-content-between">
+				<div className="container mt-2 gap-5 d-flex position-relative align-items-start justify-content-between">
 					<Filter scroll={scroll} />
 					<JobGrid scroll={scroll} status={status} jobs={result} />
 				</div>
