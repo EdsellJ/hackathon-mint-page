@@ -36,37 +36,37 @@ export default function Search() {
   }
 
   return (
-    <div className="container search mb-4 d-flex w-full justify-content-between align-items-center">
+    <div className="container search mb-4 d-flex w-full py-4 justify-content-between align-items-center">
       <Button
-        className="bg-deep-blue border-0 px-4 text-white py-2 rounded-pill hover-bg-primary"
+        className="bg-deep-blue border-0 px-4  text-white py-2 rounded-pill hover-bg-primary"
         text="Post a Job"
       />
       <form
-        className="search justify-content-between col-10 d-flex align-items-center my-4"
+        className="search justify-content-between gap-4 col-10 d-flex align-items-center"
         onSubmit={handleSubmit}
       >
-        <div className="input col-8 position-relative">
+        <div className="input col-7 position-relative">
           <img
             src="/assets/search.svg"
             alt="search"
-            className="position-absolute w-4"
+            className="position-absolute mt-2 pt-1 ms-3"
           />
           <input
-            className="rounded border-blue w-100 py-2 pl-16"
+            className="rounded border-blue w-100 py-2 ps-5"
             placeholder="Search by company, role"
             name="title"
             value={searchJob.title}
             onChange={handleInput}
           />
         </div>
-        <div className="input col-2 position-relative">
+        <div className="input col-3 position-relative">
           <img
             src="/assets/location.svg"
             alt="location"
-            className="position-absolute top-3.5 w-4 left-8"
+            className="position-absolute mt-2 pt-1 ms-3"
           />
           <input
-            className="rounded w-full border-blue py-2 pl-16"
+            className="rounded w-100 border-blue py-2 ps-5"
             placeholder="City, state or zipcode"
             name="location"
             value={searchJob.location}

@@ -37,16 +37,15 @@ export default function JobCard({ job }: Props) {
         </div>
         <div className="bottom mt-6 d-flex justify-content-between align-items-center">
           <p className="text-deep-blue font-thin">{postedDaysAgo}</p>
-          <img
-            src="/assets/bookmark.png"
-            alt="bookmark this job"
-            className="w-3.5"
-          />
+          <img src="/assets/bookmark.png" alt="bookmark this job" />
         </div>
       </div>
       <style jsx>{`
         .jobcard {
           height: 260px;
+        }
+        .jobcard:hover {
+          opacity: 0.7;
         }
         ul.list-unstyled {
           overflow-x: scroll;
