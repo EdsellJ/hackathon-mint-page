@@ -88,6 +88,8 @@ html {
 
 .startNow button {
   border: 1px solid var(--deep-blue);
+  background-color: white;
+  color: #404471;
 }
 
 .startNow button:hover {
