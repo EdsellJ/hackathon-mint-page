@@ -18,8 +18,8 @@ export default function MenuLink({ menu }: Props) {
 	const styles = router.asPath.includes(menu.link) ? activeStyle : {};
 
 	return (
-		<li className="text-decoration-none">
-			<Link href={menu.link} style={styles}>
+		<li className="text-decoration-none mx-3">
+			<Link href={menu.link} className="text-decoration-none fs-5 text-black" style={styles}>
 				{menu.text}
 			</Link>
 		</li>
