@@ -18,7 +18,7 @@ export default function HeroBanner() {
             </p>
             <Link href="/badge-creator" className="startNow">
               <Button
-                className="font-dmsans rounded-pill px-4 my-4 border-0 py-2"
+                className="font-dmsans rounded-pill px-4 my-4 py-2"
                 text="Start Now"
               />
             </Link>

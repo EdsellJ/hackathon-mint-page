@@ -35,10 +35,28 @@ html {
   --deep-blue: #404471;
 }
 
+.text-deep-blue {
+  color: #404471;
+}
+
+.bg-deep-blue {
+  background-color: #404471;
+}
+
 .font-lora {
   font-family: "Lora", serif;
 }
 
 .font-dmsans {
   font-family: "DM Sans", sans-serif;
+}
+
+.startNow button {
+  border: 1px solid var(--deep-blue);
+}
+
+.startNow button:hover {
+  background-color: var(--deep-blue);
+  border: 1px solid white;
+  color: white;
 }
