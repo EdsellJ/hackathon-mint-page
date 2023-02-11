@@ -9,8 +9,8 @@ export default function JobBoard() {
   const { scroll } = useScroll();
   const { status, result } = useSearch();
   return (
-    <Layout title="Job board" className="jobboard pb-5">
-      <section className="light-bg">
+    <Layout title="Job board" className="jobboard">
+      <section className="light-bg pb-5">
         <Search />
         <div className="container mt-2 d-flex position-relative align-items-start justify-content-between">
           <Filter scroll={scroll} />

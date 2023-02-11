@@ -12,8 +12,11 @@ export default function JobCard({ job }: Props) {
   const jobSlug = toSlug(`${job.title}-at-${job.company}`);
   const postedDaysAgo = getJobPostDate(job.date);
   return (
-    <Link href={`/job-board/${jobSlug}`} className="text-decoration-none col-5">
-      <div className="jobcard border h-52 bg-white rounded-4 border-gray py-5 px-4 hover:bg-lightgrey">
+    <Link
+      href={`/job-board/${jobSlug}`}
+      className="text-decoration-none col-5 job-link"
+    >
+      <div className="jobcard  border bg-white rounded-4 border-gray py-5 px-4 hover:bg-lightgrey">
         <div className="top flex items-start justify-between">
           <div className="w-full">
             <h5 className="text-lg fw-bold text-deep-blue font-bold truncate">
@@ -42,6 +45,9 @@ export default function JobCard({ job }: Props) {
         </div>
       </div>
       <style jsx>{`
+        .jobcard {
+          height: 260px;
+        }
         ul.list-unstyled {
           overflow-x: scroll;
         }

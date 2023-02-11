@@ -39,6 +39,10 @@ html {
   color: #404471;
 }
 
+.z-50 {
+  z-index: 50;
+}
+
 .bg-deep-blue {
   background-color: #404471;
 }
