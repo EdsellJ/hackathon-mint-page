@@ -43,6 +43,10 @@ html {
   background-color: #404471;
 }
 
+.bg-light-blue {
+  background-color: #babfff;
+}
+
 .font-lora {
   font-family: "Lora", serif;
 }
