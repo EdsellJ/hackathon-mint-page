@@ -3,13 +3,17 @@ import { useQuery } from "@tanstack/react-query";
 import Logo from "components/Logo";
 import SpinnerRipple from "components/SpinnerRipple";
 import { getEventBriteEventList } from "utils/getEvents";
-import { formatDate } from "utils/getTimeDifference";
-import EventBriteListing from "./EventBriteListing";
+import EventBriteListing from "components/EventBriteListing";
+import { sortEventByLatestDate } from "utils/getTimeDifference";
 
 export default function UpcomingEvents() {
   const { data, status } = useQuery(["list-event"], getEventBriteEventList);
 
-  const eventArray = status === "success" ? data.data.events.reverse() : [];
+  const eventArray =
+    status === "success" ? sortEventByLatestDate(data?.data?.events) : [];
+
+  console.log("data.data", data?.data);
+  console.log("eventArray", eventArray);
 
   return (
     <div className="my-5 upcoming-events text-deep-blue mx-auto flex flex-col justify-center  container">
@@ -21,7 +25,9 @@ export default function UpcomingEvents() {
       {status === "error" ? (
         <p>Unable to fetch events from Eventbrite</p>
       ) : status === "loading" ? (
-        <SpinnerRipple centerRipple />
+        <div className="loading mx-auto d-flex justify-content-center align-items-center w-full">
+          <SpinnerRipple />
+        </div>
       ) : (
         <ul className="list-unstyled d-flex w-100 gap-4">
           {eventArray.map((briteEvent: any) => (
