@@ -7,8 +7,8 @@ export default function NFTHeader() {
 	const fixedHeader = Number(scroll) > 120 ? "fixed z-40 top-0" : "";
 	return (
 		<header className={`w-full ${fixedHeader} bottom-shadow bg-white`}>
-			<div className="container mx-auto">
-				<div className="flex w-full items-center justify-between py-6">
+			<div className="container mx-auto align-items-center">
+				<div className="d-flex w-full align-items-center justify-content-between py-2">
 					<Logo />
 					<Menu />
 				</div>

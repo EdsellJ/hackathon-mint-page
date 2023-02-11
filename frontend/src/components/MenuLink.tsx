@@ -18,7 +18,7 @@ export default function MenuLink({ menu }: Props) {
 	const styles = router.asPath.includes(menu.link) ? activeStyle : {};
 
 	return (
-		<li>
+		<li className="text-decoration-none">
 			<Link href={menu.link} style={styles}>
 				{menu.text}
 			</Link>

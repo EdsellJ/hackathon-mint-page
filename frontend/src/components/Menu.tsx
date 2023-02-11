@@ -4,8 +4,8 @@ import MenuLink from "components/MenuLink";
 
 export default function Menu() {
   return (
-    <nav className="flex items-center">
-      <ul className="flex space-x-6">
+    <nav className="d-flex align-items-center col-2">
+      <ul className="p-0 list-unstyled d-flex justify-content-between w-100">
         <MenuLink menu={menuContent.link} />
         <MenuLink menu={menuContent.auth} />
       </ul>
