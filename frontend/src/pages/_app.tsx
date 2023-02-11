@@ -19,8 +19,9 @@ import { initContract } from "near/utils";
 import Providerlayout from "layouts/Providerlayout";
 
 //----------------------------------------------------------
+declare const window: any;
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) { 
   const [loaded, setLoaded] = useState(true);
   const [inited, setInited] = useState(false);
   const [totalSupply, setTotalSupply] = useState(0);

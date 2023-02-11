@@ -14,6 +14,8 @@ if (typeof global !== "undefined") global.Buffer = Buffer;
 
 const nearConfig = getConfig("development");
 
+declare const window: any;
+
 export async function initContract() {
   const near:any = await connect(
     // @ts-ignore

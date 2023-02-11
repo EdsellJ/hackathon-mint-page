@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import FuzzySearch from "fuzzy-search";
 
 import { getWeb3Jobs } from "utils/job";
-import type { jobType } from "@types";
+import type { jobType } from "types";
 import { useAppSelector } from "hooks/useRedux";
 
 export default function useSearch() {

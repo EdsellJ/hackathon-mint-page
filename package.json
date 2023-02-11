@@ -15,6 +15,7 @@
     "lint": " cd frontend && next lint"
   },
   "devDependencies": {
+    "@types/fuzzy-search": "^2.1.2",
     "aos": "^2.3.4",
     "bootstrap": "^5.2.2",
     "near-api-js": "^0.45.1",
