@@ -16,7 +16,7 @@ export default function Search() {
   const searchText = searchQuery ? "Clear" : "Search";
   const searchStyle = searchQuery
     ? "bg-deep-blue text-white"
-    : "hover-bg-light-blue";
+    : "hover-deep-blue bg-white";
 
   function handleInput(e: any) {
     setSearchJob({
@@ -38,7 +38,7 @@ export default function Search() {
   return (
     <div className="container search mb-4 d-flex w-full py-4 justify-content-between align-items-center">
       <Button
-        className="bg-deep-blue border-0 px-4  text-white py-2 rounded-pill hover-bg-primary"
+        className="bg-deep-blue hover-white border-0 px-4  text-white py-2 rounded-pill"
         text="Post a Job"
       />
       <form
@@ -52,7 +52,7 @@ export default function Search() {
             className="position-absolute mt-2 pt-1 ms-3"
           />
           <input
-            className="rounded border-blue w-100 py-2 ps-5"
+            className="rounded border-deep-blue w-100 py-2 ps-5"
             placeholder="Search by company, role"
             name="title"
             value={searchJob.title}
@@ -66,7 +66,7 @@ export default function Search() {
             className="position-absolute mt-2 pt-1 ms-3"
           />
           <input
-            className="rounded w-100 border-blue py-2 ps-5"
+            className="rounded w-100 border-deep-blue py-2 ps-5"
             placeholder="City, state or zipcode"
             name="location"
             value={searchJob.location}
@@ -74,7 +74,7 @@ export default function Search() {
           />
         </div>
         <Button
-          className={`py-2 text-deep-blue px-5 border-blue rounded-pill ${searchStyle}`}
+          className={`py-2 text-deep-blue px-5 border-deep-blue  rounded-pill ${searchStyle}`}
           type="submit"
           text={searchText}
         />

@@ -9,11 +9,6 @@ interface Props {
 }
 
 export default function JobGrid({ scroll, jobs, status }: Props) {
-  const jobGridPosition =
-    Number(scroll) > 300
-      ? "position-absolute end-0"
-      : "position-absolute end-0";
-
   return (
     <div className={`jobgrid position-relative end-0 d-flex col-9 flex-column`}>
       {status === "error" ? (
