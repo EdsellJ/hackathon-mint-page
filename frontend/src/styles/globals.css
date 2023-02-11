@@ -31,6 +31,7 @@ html {
   overflow-x: hidden;
 }
 
+/* utilities */
 :root {
   --deep-blue: #404471;
 }
@@ -55,8 +56,22 @@ html {
   background-color: #404471;
 }
 
+.border-deep-blue {
+  border: 1px solid #404471;
+}
+
 .bg-light-blue {
   background-color: #babfff;
+}
+
+.hover-deep-blue:hover {
+  background-color: #404471 !important;
+  color: white;
+}
+
+.hover-white:hover {
+  background-color: white;
+  color: #404471 !important;
 }
 
 .light-bg {

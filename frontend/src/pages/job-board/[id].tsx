@@ -24,7 +24,7 @@ export default function JobboardDetailsView() {
       : null;
 
   return (
-    <Layout title="Job board" className="jobboard pb-5">
+    <Layout title="Job board" className="light-bg jobboard pb-5">
       <section className="container py-5">
         {status === "error" ? (
           <p>unable to fetch job details</p>
