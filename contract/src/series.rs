@@ -12,7 +12,6 @@ impl Contract {
     #[payable]
     pub fn create_series(
         &mut self,
-        id: u64,
         metadata: TokenMetadata,
         royalty: Option<HashMap<AccountId, u32>>,
         price: Option<U128>
@@ -26,6 +25,9 @@ impl Contract {
             self.approved_creators.contains(&caller) == true,
             "only approved creators can add a type"
         );
+        
+        //retreive the current id
+        let id: SeriesId = self.get_count();
 
         // Insert the series and ensure it doesn't already exist
         require!(
@@ -50,6 +52,9 @@ impl Contract {
             "collection ID already exists"
         );
 
+        //increment the ID counter
+        self.increment();
+        
         //calculate the required storage which was the used - initial
         let required_storage_in_bytes = env::storage_usage() - initial_storage_usage;
 

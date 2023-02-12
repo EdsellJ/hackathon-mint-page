@@ -18,6 +18,7 @@ pub use crate::royalty::*;
 pub use crate::series::*;
 
 mod approval;
+mod counter;
 mod enumeration;
 mod events;
 mod internal;
@@ -73,6 +74,9 @@ pub struct Contract {
 
     //keeps track of the metadata for the contract
     pub metadata: LazyOption<NFTContractMetadata>,
+
+    //keeps track of the seriesID itteration
+    pub counter: SeriesId,
 }
 
 /// Helper structure for keys of the persistent collections.
@@ -128,6 +132,9 @@ impl Contract {
         let mut approved_creators =
             LookupSet::new(StorageKey::ApprovedCreators.try_to_vec().unwrap());
         approved_creators.insert(&owner_id);
+
+        //initialize counter
+        let counter: SeriesId = 0;
         
         // Create a variable of type Self with all the fields initialized.
         let this = Self {
@@ -143,6 +150,7 @@ impl Contract {
                 StorageKey::NFTContractMetadata.try_to_vec().unwrap(),
                 Some(&metadata),
             ),
+            counter,
         };
 
         //return the Contract object
