@@ -26,6 +26,7 @@ export default function Series() {
     const [newBlob, setNewBlob] = useState<any>(undefined);
     const [roles, setRoles] = useState('');
     const [links, setLinks] = useState<any>(undefined);
+    const [description, setDescription] = useState<any>(undefined);
 
     let nft: any;
     let mrole: any;
@@ -222,7 +223,7 @@ export default function Series() {
                                 <form action="" method="post" style={classes.form}>
                                     <label style={classes.label}>Assessment</label>
                                     <br />
-                                    <textarea style={classes.textarea} id="description" name="description" placeholder=" What actions were performed to earn this badge..." rows={8} cols={70} />
+                                    <textarea style={classes.textarea} id="description" name="description" placeholder=" What actions were performed to earn this badge..." onChange={event => setDescription(event.target.value)} rows={8} cols={70} />
                                     <br />
                                 </form>
 
