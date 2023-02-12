@@ -50,4 +50,3 @@ node_modules/
 yarn.lock
 node_modules/.yarn-integrity
 package-lock.json
-.gitignore
