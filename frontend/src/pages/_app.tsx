@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import React, { useState, useEffect, useCallback } from "react";
 import type { AppProps } from "next/app";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // @components
 import Loading from "components/loading";
@@ -12,13 +12,16 @@ import { SupplyContext } from "context/SupplyContext";
 // @AOS
 import AOS from "aos";
 import "aos/dist/aos.css";
+import "styles/spinner_ripple.css";
 
 // @near
 import { initContract } from "near/utils";
+import Providerlayout from "layouts/Providerlayout";
 
 //----------------------------------------------------------
+declare const window: any;
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) { 
   const [loaded, setLoaded] = useState(true);
   const [inited, setInited] = useState(false);
   const [totalSupply, setTotalSupply] = useState(0);
@@ -59,17 +62,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <SupplyContext.Provider value={{ totalSupply }}>
-      {inited ? (
-        loaded ? (
-          <Loading />
-        ) : (
-            <Component {...pageProps} />
-        )
-      ) : (
-        <></>
-      )}
-    </SupplyContext.Provider>
+    <Providerlayout>
+      <SupplyContext.Provider value={{ totalSupply }}>
+        {inited ? loaded ? <Loading /> : <Component {...pageProps} /> : <></>}
+      </SupplyContext.Provider>
+    </Providerlayout>
   );
 }
 

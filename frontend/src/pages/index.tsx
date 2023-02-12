@@ -1,17 +1,12 @@
-import type { NextPage } from "next";
+import Layout from "layouts";
+import HeroBanner from "components/HeroBanner";
+import HomepageDetails from "components/HomepageDetails";
 
-import { Mint } from "view";
-import NavBar from '../components/NavBar';
-
-//--------------------------------------------------------------------
-
-const Home: NextPage = () => {
+export default function HomePage() {
   return (
-    <div>
-      <NavBar />
-      <Mint />
-    </div>
+    <Layout title="Welcome, start learning, earning NFTs">
+      <HeroBanner />
+      <HomepageDetails />
+    </Layout>
   );
-};
-
-export default Home;
+}
