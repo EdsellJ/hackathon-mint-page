@@ -84,14 +84,16 @@ export default function Mint() {
         if (status == true) {
             if (roles == "") {
                 alert("Please Select a Skill");
-            } else {
+            } 
+            //else if ()
+            else {
                 let content = [];
                 for (let i = 0; i < 1; i++) {
                     content[i] = transactions.functionCall(
                         "nft_mint",
                         Buffer.from(JSON.stringify({ role: roles, image: nftUrl })),
                         3000000000000,
-                        new BN("4000000000000000000000000")
+                        new BN("1000000000000000000000000")
                     );
                 }
                 await window.contract.account.signAndSendTransaction({
@@ -118,7 +120,7 @@ export default function Mint() {
     }
 
     console.log(links)
-
+    
     const classes = {
         title: {
             color: '#404471',

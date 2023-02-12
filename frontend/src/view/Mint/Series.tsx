@@ -81,7 +81,7 @@ export default function Series() {
         }
     }
 
-    async function mintNFT() {
+    async function createSeries() {
         const NFT_STORAGE_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDQ5NWZmODcwNGQ4QThkMmEyNkViQ0JkQzU5ZEY4QTkxNjg4MjlEM2MiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY2NzU1MjA5Nzc0OSwibmFtZSI6ImRlZ2VucGlnIn0.W0q6lIgDEhrwH3TaB32-SJx_8h2dsxKoLJD4PB6PfHw';
         const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
         console.log("sdfsdfs", newBlob);
@@ -97,19 +97,17 @@ export default function Series() {
             if (roles == "") {
                 alert("Please Select a Skill");
             } else {
-                let content = [];
-                for (let i = 0; i < 1; i++) {
-                    content[i] = transactions.functionCall(
-                        "nft_mint",
-                        Buffer.from(JSON.stringify({ role: roles, image: nftUrl })),
-                        3000000000000,
-                        new BN("4000000000000000000000000")
-                    );
-                }
-                await window.contract.account.signAndSendTransaction({
-                    receiverId: window.contract.contractId,
-                    actions: content,
-                });
+                await window.contract.create_series(
+                    {
+                      metadata: {
+                        title: roles,
+                        description: description,
+                        media: nftUrl,
+                      },
+                    },
+                    300000000000000, // attached GAS (optional)
+                    new BN("1000000000000000000000000")
+                  );
             }
         } else {
             alert("Please connect Wallet");
@@ -266,7 +264,7 @@ export default function Series() {
 
             <br />
             <div className="mint text-center">
-                <button style={classes.mintButton} onClick={mintNFT}>Create Design</button>
+                <button style={classes.mintButton} onClick={createSeries}>Create Design</button>
             </div>
         </div>
     );
