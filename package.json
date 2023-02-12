@@ -3,8 +3,8 @@
   "version": "0.1",
   "license": "(MIT AND Apache-2.0)",
   "scripts": {
-    "deploy": "npm run build && cd contract && near dev-deploy out/series.wasm && export NFT_CONTRACT_ID=$(cat neardev/dev-account)",
-    "build": "bash build.sh && npm run build-front",
+    "deploy": "npm run build && cd contract && near dev-deploy --wasmFile out/series.wasm && NFT_CONTRACT_ID=$(cat neardev/dev-account)",
+    "build": "bash build.sh",
     "test": "npm run test:unit && npm run test:integration",
     "test:unit": "cd contract && cargo test",
     "test:integration": "npm run build:contract && cd integration-tests && npm test  -- -- \"./contract/target/wasm32-unknown-unknown/release/educoin_near_minting_contract.wasm\"",
