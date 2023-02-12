@@ -129,7 +129,8 @@ export default function Series() {
     }
 
     console.log(links)
-
+    console.log(window.contract.get_series)
+    
     const classes = {
         title: {
             color: '#404471',
