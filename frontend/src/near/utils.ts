@@ -38,8 +38,8 @@ export async function initContract() {
     window.walletConnection.account(),
     nearConfig.contractName,
     {
-      viewMethods: ["nft_total_supply", "nft_tokens_for_owner"],
-      changeMethods: ["nft_mint"],
+      viewMethods: ["nft_total_supply", "nft_tokens_for_owner", "get_series"],
+      changeMethods: ["nft_mint", "create_series"],
     }
   );
 }
