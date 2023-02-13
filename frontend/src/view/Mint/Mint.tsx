@@ -85,7 +85,7 @@ export default function Mint() {
     //function to get nft series from the contract
     function getSeries(){
         
-        const data = window.contract.get_series().then((data) => {
+        const data = window.contract.get_series().then((data: any) => {
            for (let i = 0; i < data.length; i++){
             let value = data[i].series_id;
             let label = data[i].metadata.title;
@@ -96,7 +96,7 @@ export default function Mint() {
     }
     
     //get series and populate the skill list
-    let series = [];
+    let series: any = [];
     getSeries();
 
     
