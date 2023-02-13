@@ -1,0 +1,4 @@
+{
+	"jobType": [{ "label": "Full Time" }, { "label": "Contract" }, { "label": "Internship" }],
+	"workStyle": [{ "label": "Onsite" }, { "label": "Remote" }, { "label": "Hybrid" }]
+}

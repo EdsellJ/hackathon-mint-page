@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import skills from './skills_updated.json';
-import Select from 'react-select';
+import skills from "./skills_updated.json";
+import Select from "react-select";
 import { TagsInput } from "react-tag-input-component";
 
 import { transactions } from "near-api-js";
 
 import { useSupplyContext } from "context/SupplyContext";
-import { NFTStorage, File, Blob } from 'nft.storage'
+import { NFTStorage, File, Blob } from "nft.storage";
 
-import one from 'assets/png/One.png';
-import smallLogo from 'assets/png/small.png';
+import one from "assets/png/One.png";
+import smallLogo from "assets/png/small.png";
 
 const BN = require("bn.js");
 // ----------------------------------------------------------
 
-export default function Mint() {
+declare const window: any;
 
-    const { totalSupply } = useSupplyContext();
-    const [mintable, setMintable] = useState(5777);
+export default function Mint() {
+  const { totalSupply } = useSupplyContext();
+  const [mintable, setMintable] = useState(5777);
 
     const [file, setFile] = useState(null);
     const [newBlob, setNewBlob] = useState<any>(undefined);
@@ -26,20 +27,19 @@ export default function Mint() {
     const [idTags, setIdTags] = useState<any>([]);
     const [links, setLinks] = useState<any>(undefined);
 
-    let nft: any;
-    let mrole: any;
-    let nftUrl: any;
-    useEffect(() => {
-        setMintable(5777 - totalSupply);
-    }, [totalSupply]);
+  let nft: any;
+  let mrole: any;
+  let nftUrl: any;
+  useEffect(() => {
+    setMintable(5777 - totalSupply);
+  }, [totalSupply]);
 
     //todo:
     //fucntion that views all series and grabs their title and ID then
     //stores them in a touple
 
-    const getRole = (e: any) => {
-
-        let role = e.value;
+  const getRole = (e: any) => {
+    let role = e.value;
 
         if (role) {
             setRoles(role)
@@ -116,9 +116,9 @@ export default function Mint() {
     let skillCategories = [];
     let skillTitles = [];
 
-    for (let skill of skills.skills) {
-        skillCategories.push(skill);
-    }
+  for (let skill of skills.skills) {
+    skillCategories.push(skill);
+  }
 
     if (skillCategories) {
         for (let i = 0; i < skillCategories.length; i++) {
@@ -209,28 +209,40 @@ export default function Mint() {
         }
     }
 
-    return (
-        <div>
-            <div className="d-flex justify-content-center">
-                <div className="container-fluid" style={{ maxWidth: '50%' }}>
-                    <div className="card mt-5 p-2 shadow shadow-intensity-xl">
-                        <div className="card-body">
-                            <div className="card-block">
-                                <div className="row">
-                                    <h1 className="card-title mt-3 col-md-9" style={classes.title}>Send a Badge</h1>
-                                    <Image src={smallLogo} className="col-md-6 p-2" width={100} height={85} style={{ opacity: .5, maxWidth: '100%' }} />
-                                </div>
+  return (
+    <div>
+      <div className="d-flex justify-content-center">
+        <div className="container-fluid" style={{ maxWidth: "50%" }}>
+          <div className="card mt-5 p-2 shadow shadow-intensity-xl">
+            <div className="card-body">
+              <div className="card-block">
+                <div className="row">
+                  <h1
+                    className="card-title mt-3 col-md-9"
+                    style={classes.title}
+                  >
+                    Send a Badge
+                  </h1>
+                  <Image
+                    src={smallLogo}
+                    className="col-md-6 p-2"
+                    width={100}
+                    height={85}
+                    alt="badge"
+                    style={{ opacity: 0.5, maxWidth: "100%" }}
+                  />
+                </div>
 
-                                <div className="container-fluid">
-                                    <div className="row gx-0 mt-5">
-                                        <div className="col-1">
-                                            <Image src={one} height={30} width={30} />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <h4 style={classes.info}>Add Associated Skill</h4>
-                                        </div>
-                                    </div>
-                                </div>
+                <div className="container-fluid">
+                  <div className="row gx-0 mt-5">
+                    <div className="col-1">
+                      <Image alt="skill" src={one} height={30} width={30} />
+                    </div>
+                    <div className="col-md-6">
+                      <h4 style={classes.info}>Add Associated Skill</h4>
+                    </div>
+                  </div>
+                </div>
 
                                 <div style={classes.form}>
                                     <Select options={series} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '1px solid grey', borderRadius: 25 }), }} placeholder="Select a skill..." />
@@ -254,11 +266,12 @@ export default function Mint() {
                 </div>
             </div>
 
-            <br />
-            <div className="mint text-center">
-                <button style={classes.mintButton} onClick={mintNFT}>Send Badge</button>
-            </div>
-        </div>
-    );
+      <br />
+      <div className="mint text-center">
+        <button style={classes.mintButton} onClick={mintNFT}>
+          Send Badge
+        </button>
+      </div>
+    </div>
+  );
 }
-

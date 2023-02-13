@@ -2,8 +2,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, DM Sans, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, DM Sans, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -29,4 +29,71 @@ html {
 
 #__next {
   overflow-x: hidden;
+}
+
+/* utilities */
+:root {
+  --deep-blue: #404471;
+}
+
+.text-deep-blue {
+  color: #404471;
+}
+
+.start-65 {
+  left: 65px;
+}
+
+.filter .wrapper {
+  width: 330px;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+.bg-deep-blue {
+  background-color: #404471;
+}
+
+.border-deep-blue {
+  border: 1px solid #404471;
+}
+
+.bg-light-blue {
+  background-color: #babfff;
+}
+
+.hover-deep-blue:hover {
+  background-color: #404471 !important;
+  color: white;
+}
+
+.hover-white:hover {
+  background-color: white;
+  color: #404471 !important;
+}
+
+.light-bg {
+  background-color: #f5f5f5;
+}
+
+.font-lora {
+  font-family: "Lora", serif;
+}
+
+.font-dmsans {
+  font-family: "DM Sans", sans-serif;
+}
+
+.startNow button {
+  border: 1px solid var(--deep-blue);
+  background-color: white;
+  color: #404471;
+}
+
+.startNow button:hover {
+  background-color: var(--deep-blue);
+  border: 1px solid white;
+  color: white;
 }

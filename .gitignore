@@ -24,6 +24,7 @@ ode_modules
 .env.development.local
 .env.test.local
 .env.production.local
+.env
 /.cache
 
 npm-debug.log*
@@ -48,3 +49,4 @@ frontend/out/
 node_modules/
 yarn.lock
 node_modules/.yarn-integrity
+package-lock.json
