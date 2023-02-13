@@ -21,11 +21,11 @@ export default function Mint() {
   const { totalSupply } = useSupplyContext();
   const [mintable, setMintable] = useState(5777);
 
-  const [file, setFile] = useState(null);
-  const [newBlob, setNewBlob] = useState<any>(undefined);
-  const [roles, setRoles] = useState("");
-  const [idTags, setIdTags] = useState<any>(undefined);
-  const [links, setLinks] = useState<any>(undefined);
+    const [file, setFile] = useState(null);
+    const [newBlob, setNewBlob] = useState<any>(undefined);
+    const [roles, setRoles] = useState('');
+    const [idTags, setIdTags] = useState<any>([]);
+    const [links, setLinks] = useState<any>(undefined);
 
   let nft: any;
   let mrole: any;
@@ -34,158 +34,168 @@ export default function Mint() {
     setMintable(5777 - totalSupply);
   }, [totalSupply]);
 
-  async function dataURItoBlob(dataURI: any) {
-    // convert base64 to raw binary data held in a string
-    // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
-    var byteString = atob(dataURI.split(",")[1]);
-
-    // separate out the mime component
-    var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
-
-    // write the bytes of the string to an ArrayBuffer
-    var ab = new ArrayBuffer(byteString.length);
-
-    // create a view into the buffer
-    var ia = new Uint8Array(ab);
-
-    // set the bytes of the buffer to the correct values
-    for (var i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-
-    // write the ArrayBuffer to a blob, and you're done
-    var blob = new Blob([ab], { type: mimeString });
-    return blob;
-  }
-
   const getRole = (e: any) => {
     let role = e.value;
 
-    if (role) {
-      setRoles(role);
-      mrole = role;
-    } else {
-      mrole = "";
-    }
-  };
-
-  async function mintNFT() {
-    const NFT_STORAGE_TOKEN =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDQ5NWZmODcwNGQ4QThkMmEyNkViQ0JkQzU5ZEY4QTkxNjg4MjlEM2MiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY2NzU1MjA5Nzc0OSwibmFtZSI6ImRlZ2VucGlnIn0.W0q6lIgDEhrwH3TaB32-SJx_8h2dsxKoLJD4PB6PfHw";
-    const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
-    console.log("sdfsdfs", newBlob);
-    const cid = await client.storeBlob(newBlob);
-
-    nftUrl = "https://" + String(cid) + ".ipfs.nftstorage.link";
-
-    let status = window?.walletConnection?.isSignedIn();
-    console.log(nftUrl);
-    console.log(mrole, "mrole");
-    console.log(roles, "roles");
-    if (status == true) {
-      if (roles == "") {
-        alert("Please Select a Skill");
-      } 
-            //else if ()
-            else {
-        let content = [];
-        for (let i = 0; i < 1; i++) {
-          content[i] = transactions.functionCall(
-            "nft_mint",
-            Buffer.from(JSON.stringify({ role: roles, image: nftUrl })),
-            3000000000000,
-            new BN("1000000000000000000000000")
-          );
+        if (role) {
+            setRoles(role)
+            mrole = role;
+        } else {
+            mrole = "";
         }
-        await window.contract.account.signAndSendTransaction({
-          receiverId: window.contract.contractId,
-          actions: content,
-        });
-      }
-    } else {
-      alert("Please connect Wallet");
     }
-  }
 
-  let skillCategories = [];
-  let skillTitles = [];
+
+    async function mintNFT() {
+        let status = window?.walletConnection?.isSignedIn();
+        console.log(nftUrl);
+        console.log(mrole, 'mrole');
+        console.log(roles, 'roles')
+        if (status == true) {
+            if (roles == "") {
+                alert("Please Select a Skill");
+            } 
+            else if (!idTags.length){
+                alert("Please enter a Near Student ID")
+            }
+            else if (wrongIdSyntax()){
+                alert("One or more of the Student IDs does not contain .testnet")
+            }
+            else {
+                console.log(idTags)
+                let content = [];
+                for (let i = 0; i < idTags.length; i++) {
+                    content[i] = transactions.functionCall(
+                        "nft_mint",
+                        Buffer.from(JSON.stringify({ id: roles.toString(), receiver_id: idTags[i] })),
+                        8000000000000,
+                        new BN("20000000000000000000000")
+                    );
+                }
+                await window.contract.account.signAndSendTransaction({
+                    receiverId: window.contract.contractId,
+                    actions: content,
+                });
+            }
+        } else {
+            alert("Please connect Wallet");
+        }
+    }
+
+    //function to get nft series from the contract
+    function getSeries(){
+        
+        const data = window.contract.get_series().then((data: any) => {
+           for (let i = 0; i < data.length; i++){
+            let value = data[i].series_id;
+            let label = data[i].metadata.title;
+            series.push({ value , label })
+        }
+        });
+        
+    }
+    
+    //get series and populate the skill list
+    let series: any = [];
+    getSeries();
+
+    
+    /*
+    let skillCategories = [];
+    let skillTitles = [];
 
   for (let skill of skills.skills) {
     skillCategories.push(skill);
   }
 
-  if (skillCategories) {
-    for (let i = 0; i < skillCategories.length; i++) {
-      skillTitles.push({
-        value: skillCategories[i].skillName,
-        label: skillCategories[i].skillName,
-      });
+    if (skillCategories) {
+        for (let i = 0; i < skillCategories.length; i++) {
+            skillTitles.push({ value: skillCategories[i].skillName, label: skillCategories[i].skillName })
+        }
     }
-  }
+    */
+    function wrongIdSyntax(){
+        for (let i = 0; i < idTags.length; i++){
+            //check if the idTags contain testnet
+            if (!idTags[i].includes("testnet")){
+                //if not return true
+                return true;
+            }
+        }
+        return false;
+    }
+    async function addIdTag(e: any){
+        setIdTags(e);
+        /*
+        console.log(idTags);
+        console.log(idTags.length)
+        console.log(await window.contract.get_series());
+        */
+    }
+    console.log(links);
+    
+    const classes = {
+        title: {
+            color: '#404471',
+            fontWeight: 'bold',
+        },
+        mintButton: {
+            width: 150,
+            height: 50,
+            borderRadius: 25,
+            backgroundColor: "#F7623F",
+            marginTop: '2.5%',
+            marginBottom: '10%',
+            color: 'white',
+            border: 'none',
+        },
+        uploadImgDiv: {
+            padding: 20,
+            margin: 'auto',
 
-  console.log(links);
-
-  const classes = {
-    title: {
-      color: "#404471",
-      fontWeight: "bold",
-    },
-    mintButton: {
-      width: 150,
-      height: 50,
-      borderRadius: 25,
-      backgroundColor: "#F7623F",
-      marginTop: "2.5%",
-      marginBottom: "10%",
-      color: "white",
-      border: "none",
-    },
-    uploadImgDiv: {
-      padding: 20,
-      margin: "auto",
-    },
-    uploadContentDiv: {
-      border: "1px solid grey",
-      padding: 50,
-    },
-    dragFileText: {
-      marginBottom: "15%",
-    },
-    inputName: {
-      marginBottom: "5%",
-      width: "100%",
-      padding: 12,
-      borderRadius: 25,
-      border: "1px solid grey",
-    },
-    inputPrice: {
-      margin: "5%",
-      width: "50%",
-      padding: 12,
-      borderRadius: 25,
-      border: "1px solid grey",
-    },
-    form: {
-      marginTop: "5%",
-    },
-    info: {
-      color: "#404471",
-      fontWeight: "bold",
-    },
-    label: {
-      color: "#404471",
-      fontWeight: "bold",
-      marginBottom: "2%",
-    },
-    textarea: {
-      maxWidth: "100%",
-    },
-    span: {
-      fontSize: 14,
-      fontWeight: "normal",
-      color: "#404471",
-    },
-  };
+        },
+        uploadContentDiv: {
+            border: '1px solid grey',
+            padding: 50,
+        },
+        dragFileText: {
+            marginBottom: '15%',
+        },
+        inputName: {
+            marginBottom: '5%',
+            width: '100%',
+            padding: 12,
+            borderRadius: 25,
+            border: '1px solid grey'
+        },
+        inputPrice: {
+            margin: '5%',
+            width: '50%',
+            padding: 12,
+            borderRadius: 25,
+            border: '1px solid grey'
+        },
+        form: {
+            marginTop: '5%'
+        },
+        info: {
+            color: '#404471',
+            fontWeight: 'bold',
+        },
+        label: {
+            color: '#404471',
+            fontWeight: 'bold',
+            marginBottom: '2%'
+        },
+        textarea: {
+            maxWidth: '100%'
+        },
+        span: {
+            fontSize: 14,
+            fontWeight: 'normal',
+            color: '#404471'
+        }
+    }
 
   return (
     <div>
@@ -222,42 +232,26 @@ export default function Mint() {
                   </div>
                 </div>
 
-                <div style={classes.form}>
-                  <Select
-                    options={skillTitles}
-                    onChange={getRole}
-                    id="skills"
-                    styles={{
-                      control: (baseStyles) => ({
-                        ...baseStyles,
-                        border: "1px solid grey",
-                        borderRadius: 25,
-                      }),
-                    }}
-                    placeholder="Select a skill..."
-                  />
-                </div>
+                                <div style={classes.form}>
+                                    <Select options={series} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '1px solid grey', borderRadius: 25 }), }} placeholder="Select a skill..." />
+                                </div>
 
-                <form action="" method="post" style={classes.form}>
-                  <br />
-                  <label style={classes.label}>
-                    STUDENT NEAR IDs{" "}
-                    <span style={classes.span}>
-                      (press enter to add multiple IDs)
-                    </span>
-                  </label>
-                  <TagsInput
-                    value={idTags}
-                    onChange={setIdTags}
-                    name="tags"
-                    placeHolder="example.testnet"
-                  />
-                </form>
-              </div>
+                                <form action="" method="post" style={classes.form}>
+                                    <br />
+                                    <label style={classes.label}>STUDENT NEAR IDs <span style={classes.span}>(press enter to add multiple IDs)</span></label>
+                                    <TagsInput
+                                        value={idTags}
+                                        onChange={addIdTag}
+                                        name="tags"
+                                        placeHolder="example.testnet"
+                                    />
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
 
       <br />
       <div className="mint text-center">

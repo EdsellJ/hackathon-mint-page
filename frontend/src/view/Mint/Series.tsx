@@ -91,31 +91,31 @@ export default function Series() {
 
     nftUrl = "https://" + String(cid) + ".ipfs.nftstorage.link";
 
-    let status = window?.walletConnection?.isSignedIn();
-    console.log(nftUrl);
-    console.log(mrole, 'mrole');
-    console.log(roles, 'roles')
-    if (status == true) {
-        if (roles == "") {
-            alert("Please Select a Skill");
+        let status = window?.walletConnection?.isSignedIn();
+        console.log(nftUrl);
+        console.log(mrole, 'mrole');
+        console.log(roles, 'roles')
+        if (status == true) {
+            if (roles == "") {
+                alert("Please Select a Skill");
+            //todo else if(no descripion)
+            } else {
+                await window.contract.create_series(
+                    {
+                      metadata: {
+                        title: roles,
+                        description: description,
+                        media: nftUrl,
+                      },
+                    },
+                    300000000000000, // attached GAS (optional)
+                    new BN("100000000000000000000000")
+                  );
+            }
         } else {
-            await window.contract.create_series(
-                {
-                  metadata: {
-                    title: roles,
-                    description: description,
-                    media: nftUrl,
-                  },
-                },
-                300000000000000, // attached GAS (optional)
-                new BN("1000000000000000000000000")
-              );
+            alert("Please connect Wallet");
         }
-    } else {
-        alert("Please connect Wallet");
     }
-}
-
 
   let skillCategories = [];
   let skillTitles = [];
