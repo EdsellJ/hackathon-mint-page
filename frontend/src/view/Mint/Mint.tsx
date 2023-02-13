@@ -34,10 +34,6 @@ export default function Mint() {
     setMintable(5777 - totalSupply);
   }, [totalSupply]);
 
-    //todo:
-    //fucntion that views all series and grabs their title and ID then
-    //stores them in a touple
-
   const getRole = (e: any) => {
     let role = e.value;
 
@@ -84,14 +80,6 @@ export default function Mint() {
         } else {
             alert("Please connect Wallet");
         }
-    }
-
-    class theSeries {
-        series_id: string;
-        metadata: {
-            title: string;
-        }
-
     }
 
     //function to get nft series from the contract
@@ -253,7 +241,6 @@ export default function Mint() {
                                     <label style={classes.label}>STUDENT NEAR IDs <span style={classes.span}>(press enter to add multiple IDs)</span></label>
                                     <TagsInput
                                         value={idTags}
-                                        //todo: create a function that is called here that creates an array of the idTags
                                         onChange={addIdTag}
                                         name="tags"
                                         placeHolder="example.testnet"
