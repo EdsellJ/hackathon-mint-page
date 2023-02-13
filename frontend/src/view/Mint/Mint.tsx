@@ -34,6 +34,7 @@ export default function Mint() {
     setMintable(5777 - totalSupply);
   }, [totalSupply]);
 
+  //gets the series ID associated with the label listed in the options
   const getRole = (e: any) => {
     let role = e.value;
 
@@ -45,12 +46,11 @@ export default function Mint() {
         }
     }
 
-
+    //function to handle minting nft's
     async function mintNFT() {
+        //check if a user is signed in
         let status = window?.walletConnection?.isSignedIn();
-        console.log(nftUrl);
-        console.log(mrole, 'mrole');
-        console.log(roles, 'roles')
+        //if so check that formes are filled in
         if (status == true) {
             if (roles == "") {
                 alert("Please Select a Skill");
@@ -61,8 +61,8 @@ export default function Mint() {
             else if (wrongIdSyntax()){
                 alert("One or more of the Student IDs does not contain .testnet")
             }
+            //if all forms are filled in mint the badge
             else {
-                console.log(idTags)
                 let content = [];
                 for (let i = 0; i < idTags.length; i++) {
                     content[i] = transactions.functionCall(
@@ -99,21 +99,6 @@ export default function Mint() {
     let series: any = [];
     getSeries();
 
-    
-    /*
-    let skillCategories = [];
-    let skillTitles = [];
-
-  for (let skill of skills.skills) {
-    skillCategories.push(skill);
-  }
-
-    if (skillCategories) {
-        for (let i = 0; i < skillCategories.length; i++) {
-            skillTitles.push({ value: skillCategories[i].skillName, label: skillCategories[i].skillName })
-        }
-    }
-    */
     function wrongIdSyntax(){
         for (let i = 0; i < idTags.length; i++){
             //check if the idTags contain testnet
@@ -123,16 +108,11 @@ export default function Mint() {
             }
         }
         return false;
+
     }
     async function addIdTag(e: any){
         setIdTags(e);
-        /*
-        console.log(idTags);
-        console.log(idTags.length)
-        console.log(await window.contract.get_series());
-        */
     }
-    console.log(links);
     
     const classes = {
         title: {

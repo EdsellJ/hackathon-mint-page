@@ -13,7 +13,7 @@ export default function HeroBanner() {
             </h1>
             <p className="col-8 mt-3 font-dmsans">
               <span className="font-bold">EduCoin</span> is a transformational
-              way to register for classes, sell content, and earn credentials
+              way to register for classes and earn credentials
               via NFTs.
             </p>
             <Link href="/badge-creator" className="startNow">
