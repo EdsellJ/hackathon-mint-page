@@ -97,6 +97,7 @@ export default function Series() {
         if (status == true) {
             if (roles == "") {
                 alert("Please Select a Skill");
+            //todo else if(no descripion)
             } else {
                 await window.contract.create_series(
                     {
@@ -107,7 +108,7 @@ export default function Series() {
                       },
                     },
                     300000000000000, // attached GAS (optional)
-                    new BN("1000000000000000000000000")
+                    new BN("100000000000000000000000")
                   );
             }
         } else {
