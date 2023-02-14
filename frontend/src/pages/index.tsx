@@ -6,7 +6,8 @@ export default function HomePage() {
   return (
     <Layout title="Welcome, start learning, earning NFTs">
       <HeroBanner />
-      <HomepageDetails />
+      
     </Layout>
   );
+  //<HomepageDetails />
 }

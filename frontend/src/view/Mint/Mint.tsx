@@ -10,6 +10,7 @@ import { useSupplyContext } from "context/SupplyContext";
 import { NFTStorage, File, Blob } from "nft.storage";
 
 import one from "assets/png/One.png";
+import two from "assets/png/two.png";
 import smallLogo from "assets/png/small.png";
 
 const BN = require("bn.js");
@@ -34,6 +35,7 @@ export default function Mint() {
     setMintable(5777 - totalSupply);
   }, [totalSupply]);
 
+  //gets the series ID associated with the label listed in the options
   const getRole = (e: any) => {
     let role = e.value;
 
@@ -45,12 +47,11 @@ export default function Mint() {
         }
     }
 
-
+    //function to handle minting nft's
     async function mintNFT() {
+        //check if a user is signed in
         let status = window?.walletConnection?.isSignedIn();
-        console.log(nftUrl);
-        console.log(mrole, 'mrole');
-        console.log(roles, 'roles')
+        //if so check that formes are filled in
         if (status == true) {
             if (roles == "") {
                 alert("Please Select a Skill");
@@ -61,8 +62,8 @@ export default function Mint() {
             else if (wrongIdSyntax()){
                 alert("One or more of the Student IDs does not contain .testnet")
             }
+            //if all forms are filled in mint the badge
             else {
-                console.log(idTags)
                 let content = [];
                 for (let i = 0; i < idTags.length; i++) {
                     content[i] = transactions.functionCall(
@@ -99,21 +100,6 @@ export default function Mint() {
     let series: any = [];
     getSeries();
 
-    
-    /*
-    let skillCategories = [];
-    let skillTitles = [];
-
-  for (let skill of skills.skills) {
-    skillCategories.push(skill);
-  }
-
-    if (skillCategories) {
-        for (let i = 0; i < skillCategories.length; i++) {
-            skillTitles.push({ value: skillCategories[i].skillName, label: skillCategories[i].skillName })
-        }
-    }
-    */
     function wrongIdSyntax(){
         for (let i = 0; i < idTags.length; i++){
             //check if the idTags contain testnet
@@ -123,16 +109,11 @@ export default function Mint() {
             }
         }
         return false;
+
     }
     async function addIdTag(e: any){
         setIdTags(e);
-        /*
-        console.log(idTags);
-        console.log(idTags.length)
-        console.log(await window.contract.get_series());
-        */
     }
-    console.log(links);
     
     const classes = {
         title: {
@@ -143,7 +124,7 @@ export default function Mint() {
             width: 150,
             height: 50,
             borderRadius: 25,
-            backgroundColor: "#F7623F",
+            backgroundColor: "#404471",
             marginTop: '2.5%',
             marginBottom: '10%',
             color: 'white',
@@ -226,32 +207,42 @@ export default function Mint() {
                     <div className="col-1">
                       <Image alt="skill" src={one} height={30} width={30} />
                     </div>
-                    <div className="col-md-6">
-                      <h4 style={classes.info}>Add Associated Skill</h4>
+                    <div className="col-lg">
+                      <h4 style={classes.info}>Select a Badge <span style={classes.span}>(to create a badge go to Design Badge)</span></h4>
                     </div>
                   </div>
                 </div>
 
-                                <div style={classes.form}>
-                                    <Select options={series} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '1px solid grey', borderRadius: 25 }), }} placeholder="Select a skill..." />
-                                </div>
-
-                                <form action="" method="post" style={classes.form}>
-                                    <br />
-                                    <label style={classes.label}>STUDENT NEAR IDs <span style={classes.span}>(press enter to add multiple IDs)</span></label>
-                                    <TagsInput
-                                        value={idTags}
-                                        onChange={addIdTag}
-                                        name="tags"
-                                        placeHolder="example.testnet"
-                                    />
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
+                <div style={classes.form}>
+                  <Select options={series} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '1px solid grey', borderRadius: 25 }), }} placeholder="Select a skill..." />
                 </div>
+
+                
+                <form action="" method="post" style={classes.form}>
+                  <br />
+                  <div className="container-fluid">
+                    <div className="row gx-0 mt-5">
+                      <div className="col-1">
+                        <Image alt="skill" src={two} height={30} width={30} />
+                      </div>
+                      <div className="col-lg">
+                        <h4 style={classes.info}>Student NEAR ID's <span style={classes.span}>(press enter to add multiple IDs)</span></h4>
+                      </div>
+                    </div>
+                  </div>
+                  <TagsInput
+                    value={idTags}
+                    onChange={addIdTag}
+                    name="tags"
+                    placeHolder="example.testnet"
+                  />
+                </form>
+
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
 
       <br />
       <div className="mint text-center">

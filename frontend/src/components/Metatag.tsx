@@ -13,7 +13,7 @@ export default function Metatag({ title }: Props) {
 			/>
 			<meta
 				name="description"
-				content="EduCoin is a transformational way to register for classes, sell content, and earn credentials via NFTs. Start learning & earninig NFT's"
+				content="EduCoin is a transformational way to register for classes and earn credentials via NFTs. Start learning & earninig NFT's"
 			/>
 			<meta
 				name="viewport"
@@ -38,7 +38,7 @@ export default function Metatag({ title }: Props) {
 			/>
 			<meta
 				name="twitter:description"
-				content="EduCoin is a transformational way to register for classes, sell content, and earn credentials via NFTs. Start learning & earninig NFT's"
+				content="EduCoin is a transformational way to register for classes and earn credentials via NFTs. Start learning & earninig NFT's"
 			/>
 			<meta
 				name="twitter:title"

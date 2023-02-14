@@ -12,6 +12,7 @@ import { NFTStorage, File, Blob } from "nft.storage";
 import imageHolder from "assets/png/imageHolder.png";
 import one from "assets/png/One.png";
 import two from "assets/png/two.png";
+import three from "assets/png/three.png";
 import smallLogo from "assets/png/small.png";
 
 const BN = require("bn.js");
@@ -145,7 +146,7 @@ export default function Series() {
       width: 150,
       height: 50,
       borderRadius: 25,
-      backgroundColor: "#F7623F",
+      backgroundColor: "#404471",
       marginTop: "2.5%",
       marginBottom: "10%",
       color: "white",
@@ -228,7 +229,7 @@ export default function Series() {
                       <Image alt="associated_skill" src={one} height={30} width={30} />
                     </div>
                     <div className="col-md-6">
-                      <h4 style={classes.info}>Add Associated Skill</h4>
+                      <h4 style={classes.info}>Name your Badge</h4>
                     </div>
                   </div>
                 </div>
@@ -250,7 +251,16 @@ export default function Series() {
                 </div>
 
                 <form action="" method="post" style={classes.form}>
-                  <label style={classes.label}>Assessment</label>
+                  <div className="container-fluid">
+                    <div className="row gx-0 mt-5">
+                      <div className="col-1">
+                        <Image alt="associated_skill" src={two} height={30} width={30} />
+                      </div>
+                      <div className="col-md-6">
+                        <h4 style={classes.info}>Define your Badge</h4>
+                      </div>
+                    </div>
+                  </div>
                   <br />
                   <textarea
                     style={classes.textarea}
@@ -266,17 +276,12 @@ export default function Series() {
                 <div className="container-fluid">
                   <div className="row gx-0 mt-5">
                     <div className="col-1">
-                      <Image alt="upload" src={two} height={30} width={30} />
+                      <Image alt="upload" src={three} height={30} width={30} />
                     </div>
                     <div className="col-md-6">
-                      <h4 style={classes.info}>Upload</h4>
+                      <h4 style={classes.info}>Upload Badge Art</h4>
                     </div>
                   </div>
-                </div>
-
-                <br />
-                <div>
-                  <label style={classes.label}>Upload Badge Art</label>
                 </div>
 
                 <div style={classes.uploadContentDiv}>
