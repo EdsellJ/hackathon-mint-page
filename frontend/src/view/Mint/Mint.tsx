@@ -214,7 +214,7 @@ export default function Mint() {
                 </div>
 
                 <div style={classes.form}>
-                  <Select options={series} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '1px solid grey', borderRadius: 25 }), }} placeholder="Select a skill..." />
+                  <Select options={series} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '1px solid grey', borderRadius: 25 }), }} placeholder="Select a badge..." />
                 </div>
 
                 

@@ -246,7 +246,7 @@ export default function Series() {
                         borderRadius: 25,
                       }),
                     }}
-                    placeholder="Select a skill..."
+                    placeholder="Select a badge..."
                   />
                 </div>
 
