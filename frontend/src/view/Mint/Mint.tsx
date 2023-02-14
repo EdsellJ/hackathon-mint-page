@@ -24,7 +24,7 @@ export default function Mint() {
 
     const [file, setFile] = useState(null);
     const [newBlob, setNewBlob] = useState<any>(undefined);
-    const [roles, setRoles] = useState('');
+    const [roles, setRoles] = useState<any>(undefined);
     const [idTags, setIdTags] = useState<any>([]);
     const [links, setLinks] = useState<any>(undefined);
 
@@ -37,25 +37,20 @@ export default function Mint() {
 
   //gets the series ID associated with the label listed in the options
   const getRole = (e: any) => {
-    let role = e.value;
-
-        if (role) {
-            setRoles(role)
-            mrole = role;
-        } else {
-            mrole = "";
-        }
+    setRoles(e.value);
+    console.log(e.value); 
     }
-
+  
+  
     //function to handle minting nft's
     async function mintNFT() {
         //check if a user is signed in
         let status = window?.walletConnection?.isSignedIn();
         //if so check that formes are filled in
         if (status == true) {
-            //if (roles.toString == "") {
-                //alert("Please Select a Skill");
-            //} 
+            if (roles == undefined) {
+                alert("Please Select a Skill");
+            } 
             if (!idTags.length){
                 alert("Please enter a Near Student ID")
             }
@@ -99,6 +94,7 @@ export default function Mint() {
     //get series and populate the skill list
     let series: any = [];
     getSeries();
+    console.log(series)
 
     function wrongIdSyntax(){
         for (let i = 0; i < idTags.length; i++){
@@ -177,6 +173,15 @@ export default function Mint() {
             color: '#404471'
         }
     }
+    /*            <Image
+                    src={smallLogo}
+                    className="col-md-6 p-2"
+                    width={100}
+                    height={85}
+                    alt="badge"
+                    style={{ opacity: 0.5, maxWidth: "100%" }}
+                  />
+    */
 
   return (
     <div>
@@ -192,14 +197,6 @@ export default function Mint() {
                   >
                     Send a Badge
                   </h1>
-                  <Image
-                    src={smallLogo}
-                    className="col-md-6 p-2"
-                    width={100}
-                    height={85}
-                    alt="badge"
-                    style={{ opacity: 0.5, maxWidth: "100%" }}
-                  />
                 </div>
 
                 <div className="container-fluid">

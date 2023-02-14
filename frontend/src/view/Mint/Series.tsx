@@ -213,14 +213,6 @@ export default function Series() {
                   >
                     Design a Badge
                   </h1>
-                  <Image
-                    alt="small logo"
-                    src={smallLogo}
-                    className="col-md-6 p-2"
-                    width={100}
-                    height={85}
-                    style={{ opacity: 0.5, maxWidth: "100%" }}
-                  />
                 </div>
 
                 <div className="container-fluid">
