@@ -53,10 +53,10 @@ export default function Mint() {
         let status = window?.walletConnection?.isSignedIn();
         //if so check that formes are filled in
         if (status == true) {
-            if (roles == "") {
-                alert("Please Select a Skill");
-            } 
-            else if (!idTags.length){
+            //if (roles.toString == "") {
+                //alert("Please Select a Skill");
+            //} 
+            if (!idTags.length){
                 alert("Please enter a Near Student ID")
             }
             else if (wrongIdSyntax()){
