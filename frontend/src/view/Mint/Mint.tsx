@@ -10,6 +10,7 @@ import { useSupplyContext } from "context/SupplyContext";
 import { NFTStorage, File, Blob } from "nft.storage";
 
 import one from "assets/png/One.png";
+import two from "assets/png/two.png";
 import smallLogo from "assets/png/small.png";
 
 const BN = require("bn.js");
@@ -123,7 +124,7 @@ export default function Mint() {
             width: 150,
             height: 50,
             borderRadius: 25,
-            backgroundColor: "#F7623F",
+            backgroundColor: "#404471",
             marginTop: '2.5%',
             marginBottom: '10%',
             color: 'white',
@@ -206,32 +207,42 @@ export default function Mint() {
                     <div className="col-1">
                       <Image alt="skill" src={one} height={30} width={30} />
                     </div>
-                    <div className="col-md-6">
-                      <h4 style={classes.info}>Add Associated Skill</h4>
+                    <div className="col-lg">
+                      <h4 style={classes.info}>Select a Badge <span style={classes.span}>(to create a badge go to Design Badge)</span></h4>
                     </div>
                   </div>
                 </div>
 
-                                <div style={classes.form}>
-                                    <Select options={series} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '1px solid grey', borderRadius: 25 }), }} placeholder="Select a skill..." />
-                                </div>
-
-                                <form action="" method="post" style={classes.form}>
-                                    <br />
-                                    <label style={classes.label}>STUDENT NEAR IDs <span style={classes.span}>(press enter to add multiple IDs)</span></label>
-                                    <TagsInput
-                                        value={idTags}
-                                        onChange={addIdTag}
-                                        name="tags"
-                                        placeHolder="example.testnet"
-                                    />
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
+                <div style={classes.form}>
+                  <Select options={series} onChange={getRole} id="skills" styles={{ control: (baseStyles) => ({ ...baseStyles, border: '1px solid grey', borderRadius: 25 }), }} placeholder="Select a skill..." />
                 </div>
+
+                
+                <form action="" method="post" style={classes.form}>
+                  <br />
+                  <div className="container-fluid">
+                    <div className="row gx-0 mt-5">
+                      <div className="col-1">
+                        <Image alt="skill" src={two} height={30} width={30} />
+                      </div>
+                      <div className="col-lg">
+                        <h4 style={classes.info}>Student NEAR ID's <span style={classes.span}>(press enter to add multiple IDs)</span></h4>
+                      </div>
+                    </div>
+                  </div>
+                  <TagsInput
+                    value={idTags}
+                    onChange={addIdTag}
+                    name="tags"
+                    placeHolder="example.testnet"
+                  />
+                </form>
+
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
 
       <br />
       <div className="mint text-center">
