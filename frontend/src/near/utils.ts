@@ -12,7 +12,7 @@ import { Buffer } from "buffer";
 if (typeof window !== "undefined") window.Buffer = Buffer;
 if (typeof global !== "undefined") global.Buffer = Buffer;
 
-const nearConfig = getConfig("development");
+const nearConfig = getConfig("production");
 
 declare const window: any;
 
