@@ -54,9 +54,11 @@ export default function Mint() {
             if (!idTags.length){
                 alert("Please enter a Near Student ID")
             }
+            /*
             else if (wrongIdSyntax()){
                 alert("One or more of the Student IDs does not contain .testnet")
             }
+            */
             //if all forms are filled in mint the badge
             else {
                 let content = [];
