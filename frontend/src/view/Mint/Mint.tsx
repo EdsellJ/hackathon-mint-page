@@ -233,7 +233,7 @@ export default function Mint() {
                     value={idTags}
                     onChange={addIdTag}
                     name="tags"
-                    placeHolder="example.testnet"
+                    placeHolder="example.near"
                   />
                 </form>
 

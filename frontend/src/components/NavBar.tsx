@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 // @assets
-import Logo from "assets/png/navLogo.png";
+import Logo from "assets/png/youniLogo.png";
 //--------------------------------------------------------------------
 declare const window: any;
 const NavBar = (props: any) => {
@@ -27,7 +27,7 @@ const NavBar = (props: any) => {
       <div className="container-fluid">
         
         <a className="navbar-brand" onClick={() => router.reload()} href={"/"}>
-          <Image src={Logo} alt="EduCoin Logo" width={150} height={45} />
+          <Image src={Logo} alt="Youni Logo" width={116} height={51} />
         </a>
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
