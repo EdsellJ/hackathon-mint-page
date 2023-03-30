@@ -21,16 +21,17 @@ const NavBar = (props: any) => {
     },
     navLink: {},
   };
-
+  // 
   return (
     <nav className="navbar navbar-expand-sm shadow">
       <div className="container-fluid">
-        <a className="navbar-brand" onClick={() => router.reload()} href={"#"}>
+        
+        <a className="navbar-brand" onClick={() => router.reload()} href={"/"}>
           <Image src={Logo} alt="EduCoin Logo" width={150} height={45} />
         </a>
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
-            <Link style={classes.navLink} href="/">
+            <Link style={classes.navLink} href="/mint">
               <button className="btn">Send Badge</button>
             </Link>
           </li>

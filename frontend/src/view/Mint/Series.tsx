@@ -74,8 +74,7 @@ export default function Series() {
   };
 
   const getRole = (e: any) => {
-    let role = e.value;
-
+    let role = e.target.value;
     if (role) {
       setRoles(role);
       mrole = role;
@@ -227,18 +226,10 @@ export default function Series() {
                 </div>
 
                 <div style={classes.form}>
-                  <Select
-                    options={skillTitles}
+                  <input
                     onChange={getRole}
                     id="skills"
-                    styles={{
-                      control: (baseStyles) => ({
-                        ...baseStyles,
-                        border: "1px solid grey",
-                        borderRadius: 25,
-                      }),
-                    }}
-                    placeholder="Select a badge..."
+                    placeholder="Name your badge..."
                   />
                 </div>
 

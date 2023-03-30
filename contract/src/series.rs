@@ -19,13 +19,16 @@ impl Contract {
         // Measure the initial storage being used on the contract
         let initial_storage_usage = env::storage_usage();
 
+        
         // Ensure the caller is an approved creator
         let caller = env::predecessor_account_id();
+        /* Removed the check for Ensuring approved creators ***
         require!(
             self.approved_creators.contains(&caller) == true,
             "only approved creators can add a type"
         );
-        
+        */
+
         //retreive the current id
         let id: SeriesId = self.get_count();
 
@@ -62,7 +65,7 @@ impl Contract {
         refund_deposit(required_storage_in_bytes);
     }
 
-    /// Mint a new NFT that is part of a series. The caller must be an approved minter.
+    /// Mint a new NFT that is part of a series.
     /// The series ID must exist and if the metadata specifies a copy limit, you cannot exceed it.
     #[payable]
     pub fn nft_mint(&mut self, id: U64, receiver_id: AccountId) {
@@ -78,15 +81,19 @@ impl Contract {
             price_per_token = price;
             require!(env::attached_deposit() > price_per_token, "Need to attach at least enough to cover price");
         // If the series doesn't have a price, ensure the caller is an approved minter.
-        } else {
+        } 
+        
+        else {
             // Ensure the caller is an approved minter
-            let predecessor = env::predecessor_account_id();
+            //let predecessor = env::predecessor_account_id();
+            /* Removed the check for approved minter
             assert!(
                 self.approved_minters.contains(&predecessor),
                 "Not approved minter"
             );
+            */
         }
-
+        
         let cur_len = series.tokens.len();
         // Ensure we haven't overflowed on the number of copies minted
         if let Some(copies) = series.metadata.copies {
