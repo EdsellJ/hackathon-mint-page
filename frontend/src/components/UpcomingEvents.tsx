@@ -5,6 +5,9 @@ import SpinnerRipple from "components/SpinnerRipple";
 import { getEventBriteEventList } from "utils/getEvents";
 import EventBriteListing from "components/EventBriteListing";
 import { sortEventByLatestDate } from "utils/getTimeDifference";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export default function UpcomingEvents() {
   const { data, status } = useQuery(["list-event"], getEventBriteEventList);
@@ -29,11 +32,13 @@ export default function UpcomingEvents() {
           <SpinnerRipple />
         </div>
       ) : (
-        <ul className="list-unstyled d-flex w-100 gap-4">
-          {eventArray.map((briteEvent: any) => (
-            <EventBriteListing key={briteEvent.id} briteEvent={briteEvent} />
-          ))}
-        </ul>
+        <Container className="list-unstyled d-flex w-100 gap-4">
+          <Row>
+            {eventArray.map((briteEvent: any) => (
+              <EventBriteListing key={briteEvent.id} briteEvent={briteEvent} />
+            ))}
+          </Row>
+        </Container>
       )}
     </div>
   );
